@@ -48,6 +48,20 @@ Tests (the full trap regression net):
 python -m pytest tests/ -q          # 53 tests
 ```
 
+## What it looks like
+
+Landing page — add a dataset, history on the left:
+
+![Landing page — dataset upload and run history](docs/screenshots/landing-upload-page.png)
+
+Each run opens a review queue; your click is the final say:
+
+![Review queue — sales cards](docs/screenshots/review-ui-sales-queue.png)
+
+Escalations route to the right human instead of the sales queue:
+
+![Review queue — escalation cards](docs/screenshots/review-ui-escalation-queue.png)
+
 ## What the agent does, step by step
 
 ```
