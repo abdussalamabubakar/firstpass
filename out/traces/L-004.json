@@ -1,0 +1,92 @@
+{
+  "lead_id": "L-004",
+  "source": "webinar",
+  "submitted_at": "2026-06-02T08:05:00Z",
+  "submitted_at_valid": true,
+  "name": "Priya Natarajan",
+  "email": "",
+  "email_class": "missing",
+  "email_domain": null,
+  "company": "Verdant Labs",
+  "website": "https://verdantlabs.com",
+  "website_host": "verdantlabs.com",
+  "website_scheme": "https",
+  "monthly_budget_usd": 12000,
+  "budget_raw": "12000",
+  "budget_flag": "ok",
+  "message": "We need help with content strategy for a developer audience. Budget approved for Q3.",
+  "urls": [],
+  "flags": [
+    "missing_field:email"
+  ],
+  "sanitization": {
+    "entities_decoded": 0,
+    "tags_stripped": 0,
+    "invisible_removed": 0,
+    "bidi_removed": 0,
+    "control_removed": 0
+  },
+  "forensics": {
+    "raw": {
+      "lead_id": "L-004",
+      "submitted_at": "2026-06-02T08:05:00Z",
+      "name": "Priya Natarajan",
+      "email": "",
+      "company": "Verdant Labs",
+      "website": "https://verdantlabs.com",
+      "monthly_budget_usd": "12000",
+      "message": "We need help with content strategy for a developer audience. Budget approved for Q3.",
+      "source": "webinar"
+    }
+  },
+  "message_language": "en",
+  "intent": "commercial",
+  "intent_score": 2,
+  "growth_signal": false,
+  "verdict": {
+    "lead_id": "L-004",
+    "company": "Verdant Labs",
+    "name": "Priya Natarajan",
+    "email": "(not given)",
+    "email_class": "missing",
+    "website_host": "verdantlabs.com",
+    "budget_display": "$12,000/mo",
+    "budget_flag": "ok",
+    "source": "webinar",
+    "submitted_at": "2026-06-02T08:05:00Z",
+    "submitted_at_valid": true,
+    "message": "We need help with content strategy for a developer audience. Budget approved for Q3.",
+    "message_language": "en",
+    "urls": [],
+    "flags": [
+      "missing_field:email"
+    ],
+    "sanitization": {
+      "entities_decoded": 0,
+      "tags_stripped": 0,
+      "invisible_removed": 0,
+      "bidi_removed": 0,
+      "control_removed": 0
+    },
+    "intent": "commercial",
+    "thread_parent": null,
+    "decision": "QUALIFY",
+    "confidence": 0.75,
+    "reason": "Strong commercial intent with stated budget $12,000/mo, inside the typical retainer range for an agency of this profile.",
+    "briefing": [
+      "Company: Verdant Labs — missing email, website verdantlabs.com, submitted via webinar.",
+      "Stated budget: $12,000/mo (Observed — from the form field).",
+      "Estimated company revenue: $1,152,000-$2,880,000/yr (Assumed — $12,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing).",
+      "Single Grain fit: inside ICP — budget and intent support a sales conversation.",
+      "Risk flags: none."
+    ],
+    "revenue_estimate": {
+      "low_usd": 1152000,
+      "high_usd": 2880000,
+      "label": "Assumed",
+      "basis": "$12,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
+    },
+    "escalation_route": null,
+    "review_recommendation": "Approved"
+  }
+}

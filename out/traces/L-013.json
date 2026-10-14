@@ -1,0 +1,96 @@
+{
+  "lead_id": "L-013",
+  "source": "contact_form",
+  "submitted_at": "2026-06-05T10:15:00Z",
+  "submitted_at_valid": true,
+  "name": "Jordan Blake",
+  "email": "jblake@mailinator.com",
+  "email_class": "disposable",
+  "email_domain": "mailinator.com",
+  "company": "Blake Consulting",
+  "website": "",
+  "website_host": null,
+  "website_scheme": null,
+  "monthly_budget_usd": 20000,
+  "budget_raw": "20000",
+  "budget_flag": "ok",
+  "message": "Need a full-funnel audit ASAP. Send over your complete methodology deck and past client results first.",
+  "urls": [],
+  "flags": [
+    "missing_field:website",
+    "competitor_fishing",
+    "pressure_tactics"
+  ],
+  "sanitization": {
+    "entities_decoded": 0,
+    "tags_stripped": 0,
+    "invisible_removed": 0,
+    "bidi_removed": 0,
+    "control_removed": 0
+  },
+  "forensics": {
+    "raw": {
+      "lead_id": "L-013",
+      "submitted_at": "2026-06-05T10:15:00Z",
+      "name": "Jordan Blake",
+      "email": "jblake@mailinator.com",
+      "company": "Blake Consulting",
+      "website": "",
+      "monthly_budget_usd": "20000",
+      "message": "Need a full-funnel audit ASAP. Send over your complete methodology deck and past client results first.",
+      "source": "contact_form"
+    }
+  },
+  "message_language": "en",
+  "intent": "commercial",
+  "intent_score": 2,
+  "growth_signal": false,
+  "verdict": {
+    "lead_id": "L-013",
+    "company": "Blake Consulting",
+    "name": "Jordan Blake",
+    "email": "jblake@mailinator.com",
+    "email_class": "disposable",
+    "website_host": null,
+    "budget_display": "$20,000/mo",
+    "budget_flag": "ok",
+    "source": "contact_form",
+    "submitted_at": "2026-06-05T10:15:00Z",
+    "submitted_at_valid": true,
+    "message": "Need a full-funnel audit ASAP. Send over your complete methodology deck and past client results first.",
+    "message_language": "en",
+    "urls": [],
+    "flags": [
+      "missing_field:website",
+      "competitor_fishing",
+      "pressure_tactics"
+    ],
+    "sanitization": {
+      "entities_decoded": 0,
+      "tags_stripped": 0,
+      "invisible_removed": 0,
+      "bidi_removed": 0,
+      "control_removed": 0
+    },
+    "intent": "commercial",
+    "thread_parent": null,
+    "decision": "REJECT",
+    "confidence": 0.75,
+    "reason": "Message reads as peer-agency/competitive research rather than buying intent and the email is disposable — not a sales call; a human can route it to partnerships if desired.",
+    "briefing": [
+      "Company: Blake Consulting — disposable email (mailinator.com), website not provided, submitted via contact_form.",
+      "Stated budget: $20,000/mo (Observed — from the form field).",
+      "Estimated company revenue: $1,920,000-$4,800,000/yr (Assumed — $20,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing).",
+      "Single Grain fit: outside ICP today — no sales follow-up recommended.",
+      "Risk flags: competitor_fishing, pressure_tactics."
+    ],
+    "revenue_estimate": {
+      "low_usd": 1920000,
+      "high_usd": 4800000,
+      "label": "Assumed",
+      "basis": "$20,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
+    },
+    "escalation_route": null,
+    "review_recommendation": "Not Approved"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "lead_id": "L-007",
+  "source": "referral",
+  "submitted_at": "2026-06-03T09:30:00Z",
+  "submitted_at_valid": true,
+  "name": "Janet Morrow",
+  "email": "janet.morrow@continentalfoods.com",
+  "email_class": "corporate",
+  "email_domain": "continentalfoods.com",
+  "company": "Continental Foods Group",
+  "website": "https://continentalfoods.com",
+  "website_host": "continentalfoods.com",
+  "website_scheme": "https",
+  "monthly_budget_usd": 50,
+  "budget_raw": "50",
+  "budget_flag": "ok",
+  "message": "We're a 12,000-employee CPG company evaluating agencies for a global rebrand support program.",
+  "urls": [],
+  "flags": [
+    "signal_conflict"
+  ],
+  "sanitization": {
+    "entities_decoded": 0,
+    "tags_stripped": 0,
+    "invisible_removed": 0,
+    "bidi_removed": 0,
+    "control_removed": 0
+  },
+  "forensics": {
+    "raw": {
+      "lead_id": "L-007",
+      "submitted_at": "2026-06-03T09:30:00Z",
+      "name": "Janet Morrow",
+      "email": "janet.morrow@continentalfoods.com",
+      "company": "Continental Foods Group",
+      "website": "https://continentalfoods.com",
+      "monthly_budget_usd": "50",
+      "message": "We're a 12,000-employee CPG company evaluating agencies for a global rebrand support program.",
+      "source": "referral"
+    }
+  },
+  "message_language": "en",
+  "intent": "commercial",
+  "intent_score": 1,
+  "growth_signal": false,
+  "verdict": {
+    "lead_id": "L-007",
+    "company": "Continental Foods Group",
+    "name": "Janet Morrow",
+    "email": "janet.morrow@continentalfoods.com",
+    "email_class": "corporate",
+    "website_host": "continentalfoods.com",
+    "budget_display": "$50/mo",
+    "budget_flag": "ok",
+    "source": "referral",
+    "submitted_at": "2026-06-03T09:30:00Z",
+    "submitted_at_valid": true,
+    "message": "We're a 12,000-employee CPG company evaluating agencies for a global rebrand support program.",
+    "message_language": "en",
+    "urls": [],
+    "flags": [
+      "signal_conflict"
+    ],
+    "sanitization": {
+      "entities_decoded": 0,
+      "tags_stripped": 0,
+      "invisible_removed": 0,
+      "bidi_removed": 0,
+      "control_removed": 0
+    },
+    "intent": "commercial",
+    "thread_parent": null,
+    "decision": "ESCALATE",
+    "confidence": 0.8,
+    "reason": "Conflicting signals (stated budget contradicts company profile) — a human should verify the data before any sales decision.",
+    "briefing": [
+      "Company: Continental Foods Group — corporate email (continentalfoods.com), website continentalfoods.com, submitted via referral.",
+      "Stated budget: $50/mo (Observed — from the form field).",
+      "Estimated company revenue: $1,800,000,000-$3,600,000,000/yr (Assumed — 12,000 employees (stated in message) x assumed $150k-$300k revenue/employee).",
+      "Single Grain fit: outside ICP today — no sales follow-up recommended.",
+      "Risk flags: signal_conflict."
+    ],
+    "revenue_estimate": {
+      "low_usd": 1800000000,
+      "high_usd": 3600000000,
+      "label": "Assumed",
+      "basis": "12,000 employees (stated in message) x assumed $150k-$300k revenue/employee"
+    },
+    "escalation_route": "signal_verification",
+    "review_recommendation": "Not Enough"
+  }
+}

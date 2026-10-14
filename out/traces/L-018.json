@@ -1,0 +1,92 @@
+{
+  "lead_id": "L-018",
+  "source": "contact_form",
+  "submitted_at": "2026-06-06T14:33:00Z",
+  "submitted_at_valid": true,
+  "name": "Ben Cutler",
+  "email": "ben.cutler@quorumdata.ai",
+  "email_class": "corporate",
+  "email_domain": "quorumdata.ai",
+  "company": "Quorum Data",
+  "website": "https://quorumdata.ai",
+  "website_host": "quorumdata.ai",
+  "website_scheme": "https",
+  "monthly_budget_usd": 22000,
+  "budget_raw": "22000",
+  "budget_flag": "ok",
+  "message": "",
+  "urls": [],
+  "flags": [
+    "missing_field:message"
+  ],
+  "sanitization": {
+    "entities_decoded": 0,
+    "tags_stripped": 0,
+    "invisible_removed": 0,
+    "bidi_removed": 0,
+    "control_removed": 0
+  },
+  "forensics": {
+    "raw": {
+      "lead_id": "L-018",
+      "submitted_at": "2026-06-06T14:33:00Z",
+      "name": "Ben Cutler",
+      "email": "ben.cutler@quorumdata.ai",
+      "company": "Quorum Data",
+      "website": "https://quorumdata.ai",
+      "monthly_budget_usd": "22000",
+      "message": "",
+      "source": "contact_form"
+    }
+  },
+  "message_language": "unknown",
+  "intent": "none",
+  "intent_score": 0,
+  "growth_signal": false,
+  "verdict": {
+    "lead_id": "L-018",
+    "company": "Quorum Data",
+    "name": "Ben Cutler",
+    "email": "ben.cutler@quorumdata.ai",
+    "email_class": "corporate",
+    "website_host": "quorumdata.ai",
+    "budget_display": "$22,000/mo",
+    "budget_flag": "ok",
+    "source": "contact_form",
+    "submitted_at": "2026-06-06T14:33:00Z",
+    "submitted_at_valid": true,
+    "message": "",
+    "message_language": "unknown",
+    "urls": [],
+    "flags": [
+      "missing_field:message"
+    ],
+    "sanitization": {
+      "entities_decoded": 0,
+      "tags_stripped": 0,
+      "invisible_removed": 0,
+      "bidi_removed": 0,
+      "control_removed": 0
+    },
+    "intent": "none",
+    "thread_parent": null,
+    "decision": "QUALIFY",
+    "confidence": 0.6,
+    "reason": "No message content was submitted — this decision rests only on the verifiable form fields (stated budget $22,000/mo, corporate email, website provided); confirm the actual needs on first contact.",
+    "briefing": [
+      "Company: Quorum Data — corporate email (quorumdata.ai), website quorumdata.ai, submitted via contact_form.",
+      "Stated budget: $22,000/mo (Observed — from the form field).",
+      "Estimated company revenue: $2,112,000-$5,280,000/yr (Assumed — $22,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing).",
+      "Single Grain fit: inside ICP — budget and intent support a sales conversation.",
+      "Risk flags: none."
+    ],
+    "revenue_estimate": {
+      "low_usd": 2112000,
+      "high_usd": 5280000,
+      "label": "Assumed",
+      "basis": "$22,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
+    },
+    "escalation_route": null,
+    "review_recommendation": "Approved"
+  }
+}

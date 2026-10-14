@@ -1,0 +1,21 @@
+lead_id,decision,reason,confidence
+L-001,QUALIFY,"Strong commercial intent with stated budget $25,000/mo, inside the typical retainer range for an agency of this profile.",0.9
+L-002,REJECT,"No commercial intent — this is a career/mentorship request, not a lead.",0.9
+L-003,QUALIFY,"Thread follow-up from the same contact as L-001: strong commercial intent with stated budget $25,000/mo, inside the typical retainer range for an agency of this profile.",0.85
+L-004,QUALIFY,"Strong commercial intent with stated budget $12,000/mo, inside the typical retainer range for an agency of this profile.",0.75
+L-005,NURTURE,Real commercial interest but budget unspecified — needs a discovery/education call before qualification.,0.7
+L-006,REJECT,"Stated budget $500/mo is below the service floor and the message carried a manipulation attempt, so its claims (unlimited budget, pre-approved contract) were discarded as unverified.",0.5
+L-007,ESCALATE,Conflicting signals (stated budget contradicts company profile) — a human should verify the data before any sales decision.,0.8
+L-008,ESCALATE,"High stated budget but unverifiable identity (free-mail address, no company/website) — verify who this is before committing sales time.",0.8
+L-009,QUALIFY,"Strong commercial intent with stated budget $18,000/mo, inside the typical retainer range for an agency of this profile.",0.85
+L-010,REJECT,"Submission matches junk heuristics (placeholder identity, low-signal message, implausible budget) — no sales follow-up.",0.8
+L-011,REJECT,Message reads as peer-agency/competitive research rather than buying intent — not a sales call; a human can route it to partnerships if desired.,0.65
+L-012,QUALIFY,"Stated budget $9,000/mo in the entry-retainer range with a clear ask — worth a discovery call.",0.65
+L-013,REJECT,Message reads as peer-agency/competitive research rather than buying intent and the email is disposable — not a sales call; a human can route it to partnerships if desired.,0.75
+L-014,NURTURE,"Stated budget $3,000/mo is below typical retainers but the intent is real (clear growth signal suggests budget will grow) — nurture and revisit.",0.75
+L-015,NURTURE,"Thread follow-up from the same contact as L-002: stated budget $2,500/mo is below typical retainers but the intent is real (4 locations broaden the engagement scope) — nurture and revisit.",0.7
+L-016,QUALIFY,"Stated budget $6,000/mo in the entry-retainer range with a clear ask — worth a discovery call.",0.7
+L-017,QUALIFY,"Strong commercial intent with stated budget $15,000/mo, inside the typical retainer range for an agency of this profile.",0.85
+L-018,QUALIFY,"No message content was submitted — this decision rests only on the verifiable form fields (stated budget $22,000/mo, corporate email, website provided); confirm the actual needs on first contact.",0.6
+L-019,ESCALATE,"Legal/data-protection request (possible GDPR erasure), not a sales lead — route to privacy/compliance and pause all marketing processing for this contact.",0.95
+L-020,ESCALATE,"Suspected phishing/malware delivery in the submission — route to security; do not reply, click, download, or enrich this row.",0.95

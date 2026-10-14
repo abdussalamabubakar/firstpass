@@ -1,0 +1,92 @@
+{
+  "lead_id": "L-005",
+  "source": "contact_form",
+  "submitted_at": "2026-06-02T10:22:00Z",
+  "submitted_at_valid": true,
+  "name": "Tom Okafor",
+  "email": "tom@okaforlogistics.com",
+  "email_class": "corporate",
+  "email_domain": "okaforlogistics.com",
+  "company": "Okafor Logistics",
+  "website": "https://okaforlogistics.com",
+  "website_host": "okaforlogistics.com",
+  "website_scheme": "https",
+  "monthly_budget_usd": null,
+  "budget_raw": "we'll discuss",
+  "budget_flag": "unspecified",
+  "message": "Interested in lead gen for freight brokerage. Not sure what this should cost - educate me.",
+  "urls": [],
+  "flags": [
+    "budget:unspecified"
+  ],
+  "sanitization": {
+    "entities_decoded": 0,
+    "tags_stripped": 0,
+    "invisible_removed": 0,
+    "bidi_removed": 0,
+    "control_removed": 0
+  },
+  "forensics": {
+    "raw": {
+      "lead_id": "L-005",
+      "submitted_at": "2026-06-02T10:22:00Z",
+      "name": "Tom Okafor",
+      "email": "tom@okaforlogistics.com",
+      "company": "Okafor Logistics",
+      "website": "https://okaforlogistics.com",
+      "monthly_budget_usd": "we'll discuss",
+      "message": "Interested in lead gen for freight brokerage. Not sure what this should cost - educate me.",
+      "source": "contact_form"
+    }
+  },
+  "message_language": "en",
+  "intent": "commercial",
+  "intent_score": 1,
+  "growth_signal": false,
+  "verdict": {
+    "lead_id": "L-005",
+    "company": "Okafor Logistics",
+    "name": "Tom Okafor",
+    "email": "tom@okaforlogistics.com",
+    "email_class": "corporate",
+    "website_host": "okaforlogistics.com",
+    "budget_display": "not usable ('we'll discuss')",
+    "budget_flag": "unspecified",
+    "source": "contact_form",
+    "submitted_at": "2026-06-02T10:22:00Z",
+    "submitted_at_valid": true,
+    "message": "Interested in lead gen for freight brokerage. Not sure what this should cost - educate me.",
+    "message_language": "en",
+    "urls": [],
+    "flags": [
+      "budget:unspecified"
+    ],
+    "sanitization": {
+      "entities_decoded": 0,
+      "tags_stripped": 0,
+      "invisible_removed": 0,
+      "bidi_removed": 0,
+      "control_removed": 0
+    },
+    "intent": "commercial",
+    "thread_parent": null,
+    "decision": "NURTURE",
+    "confidence": 0.7,
+    "reason": "Real commercial interest but budget unspecified — needs a discovery/education call before qualification.",
+    "briefing": [
+      "Company: Okafor Logistics — corporate email (okaforlogistics.com), website okaforlogistics.com, submitted via contact_form.",
+      "Stated budget: not usable (form field said 'we'll discuss').",
+      "Estimated company revenue: not estimable (insufficient data (no size signal and no usable budget)).",
+      "Single Grain fit: real but early — keep warm in nurture rather than spending sales time now.",
+      "Risk flags: none."
+    ],
+    "revenue_estimate": {
+      "low_usd": null,
+      "high_usd": null,
+      "label": "Not estimable",
+      "basis": "insufficient data (no size signal and no usable budget)"
+    },
+    "escalation_route": null,
+    "review_recommendation": "Not Approved (nurture)"
+  }
+}

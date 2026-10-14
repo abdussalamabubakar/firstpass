@@ -1,0 +1,88 @@
+{
+  "lead_id": "L-001",
+  "source": "contact_form",
+  "submitted_at": "2026-06-01T09:14:00Z",
+  "submitted_at_valid": true,
+  "name": "Dana Reyes",
+  "email": "dana.reyes@brightcart.io",
+  "email_class": "corporate",
+  "email_domain": "brightcart.io",
+  "company": "BrightCart",
+  "website": "https://brightcart.io",
+  "website_host": "brightcart.io",
+  "website_scheme": "https",
+  "monthly_budget_usd": 25000,
+  "budget_raw": "25000",
+  "budget_flag": "ok",
+  "message": "We're a Series B ecommerce SaaS doing paid acquisition in-house. CAC is climbing and we want an agency to take over paid + landing page testing. Looking to start within 30 days.",
+  "urls": [],
+  "flags": [],
+  "sanitization": {
+    "entities_decoded": 0,
+    "tags_stripped": 0,
+    "invisible_removed": 0,
+    "bidi_removed": 0,
+    "control_removed": 0
+  },
+  "forensics": {
+    "raw": {
+      "lead_id": "L-001",
+      "submitted_at": "2026-06-01T09:14:00Z",
+      "name": "Dana Reyes",
+      "email": "dana.reyes@brightcart.io",
+      "company": "BrightCart",
+      "website": "https://brightcart.io",
+      "monthly_budget_usd": "25000",
+      "message": "We're a Series B ecommerce SaaS doing paid acquisition in-house. CAC is climbing and we want an agency to take over paid + landing page testing. Looking to start within 30 days.",
+      "source": "contact_form"
+    }
+  },
+  "message_language": "en",
+  "intent": "commercial",
+  "intent_score": 4,
+  "growth_signal": true,
+  "verdict": {
+    "lead_id": "L-001",
+    "company": "BrightCart",
+    "name": "Dana Reyes",
+    "email": "dana.reyes@brightcart.io",
+    "email_class": "corporate",
+    "website_host": "brightcart.io",
+    "budget_display": "$25,000/mo",
+    "budget_flag": "ok",
+    "source": "contact_form",
+    "submitted_at": "2026-06-01T09:14:00Z",
+    "submitted_at_valid": true,
+    "message": "We're a Series B ecommerce SaaS doing paid acquisition in-house. CAC is climbing and we want an agency to take over paid + landing page testing. Looking to start within 30 days.",
+    "message_language": "en",
+    "urls": [],
+    "flags": [],
+    "sanitization": {
+      "entities_decoded": 0,
+      "tags_stripped": 0,
+      "invisible_removed": 0,
+      "bidi_removed": 0,
+      "control_removed": 0
+    },
+    "intent": "commercial",
+    "thread_parent": null,
+    "decision": "QUALIFY",
+    "confidence": 0.9,
+    "reason": "Strong commercial intent with stated budget $25,000/mo, inside the typical retainer range for an agency of this profile.",
+    "briefing": [
+      "Company: BrightCart — corporate email (brightcart.io), website brightcart.io, submitted via contact_form.",
+      "Stated budget: $25,000/mo (Observed — from the form field).",
+      "Estimated company revenue: $2,400,000-$6,000,000/yr (Assumed — $25,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing).",
+      "Single Grain fit: inside ICP — budget and intent support a sales conversation.",
+      "Risk flags: none."
+    ],
+    "revenue_estimate": {
+      "low_usd": 2400000,
+      "high_usd": 6000000,
+      "label": "Assumed",
+      "basis": "$25,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
+    },
+    "escalation_route": null,
+    "review_recommendation": "Approved"
+  }
+}

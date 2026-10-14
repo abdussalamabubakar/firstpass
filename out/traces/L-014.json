@@ -1,0 +1,88 @@
+{
+  "lead_id": "L-014",
+  "source": "podcast",
+  "submitted_at": "2026-06-05T13:26:00Z",
+  "submitted_at_valid": true,
+  "name": "Emily Tran",
+  "email": "emily.tran@seedlingapp.com",
+  "email_class": "corporate",
+  "email_domain": "seedlingapp.com",
+  "company": "Seedling",
+  "website": "https://seedlingapp.com",
+  "website_host": "seedlingapp.com",
+  "website_scheme": "https",
+  "monthly_budget_usd": 3000,
+  "budget_raw": "3000",
+  "budget_flag": "ok",
+  "message": "Pre-seed startup, small budget today but raising in the fall. Want to start light on SEO now and scale spend in about 6 months.",
+  "urls": [],
+  "flags": [],
+  "sanitization": {
+    "entities_decoded": 0,
+    "tags_stripped": 0,
+    "invisible_removed": 0,
+    "bidi_removed": 0,
+    "control_removed": 0
+  },
+  "forensics": {
+    "raw": {
+      "lead_id": "L-014",
+      "submitted_at": "2026-06-05T13:26:00Z",
+      "name": "Emily Tran",
+      "email": "emily.tran@seedlingapp.com",
+      "company": "Seedling",
+      "website": "https://seedlingapp.com",
+      "monthly_budget_usd": "3000",
+      "message": "Pre-seed startup, small budget today but raising in the fall. Want to start light on SEO now and scale spend in about 6 months.",
+      "source": "podcast"
+    }
+  },
+  "message_language": "en",
+  "intent": "commercial",
+  "intent_score": 1,
+  "growth_signal": true,
+  "verdict": {
+    "lead_id": "L-014",
+    "company": "Seedling",
+    "name": "Emily Tran",
+    "email": "emily.tran@seedlingapp.com",
+    "email_class": "corporate",
+    "website_host": "seedlingapp.com",
+    "budget_display": "$3,000/mo",
+    "budget_flag": "ok",
+    "source": "podcast",
+    "submitted_at": "2026-06-05T13:26:00Z",
+    "submitted_at_valid": true,
+    "message": "Pre-seed startup, small budget today but raising in the fall. Want to start light on SEO now and scale spend in about 6 months.",
+    "message_language": "en",
+    "urls": [],
+    "flags": [],
+    "sanitization": {
+      "entities_decoded": 0,
+      "tags_stripped": 0,
+      "invisible_removed": 0,
+      "bidi_removed": 0,
+      "control_removed": 0
+    },
+    "intent": "commercial",
+    "thread_parent": null,
+    "decision": "NURTURE",
+    "confidence": 0.75,
+    "reason": "Stated budget $3,000/mo is below typical retainers but the intent is real (clear growth signal suggests budget will grow) — nurture and revisit.",
+    "briefing": [
+      "Company: Seedling — corporate email (seedlingapp.com), website seedlingapp.com, submitted via podcast.",
+      "Stated budget: $3,000/mo (Observed — from the form field).",
+      "Estimated company revenue: $288,000-$720,000/yr (Assumed — $3,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing).",
+      "Single Grain fit: real but early — keep warm in nurture rather than spending sales time now.",
+      "Risk flags: none."
+    ],
+    "revenue_estimate": {
+      "low_usd": 288000,
+      "high_usd": 720000,
+      "label": "Assumed",
+      "basis": "$3,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
+    },
+    "escalation_route": null,
+    "review_recommendation": "Not Approved (nurture)"
+  }
+}

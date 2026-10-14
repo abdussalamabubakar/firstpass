@@ -1,0 +1,116 @@
+{
+  "lead_id": "L-020",
+  "source": "contact_form",
+  "submitted_at": "2026-06-07T16:05:00Z",
+  "submitted_at_valid": true,
+  "name": "Victor Ionescu",
+  "email": "victor@fastpay-billing.net",
+  "email_class": "corporate",
+  "email_domain": "fastpay-billing.net",
+  "company": "FastPay Billing",
+  "website": "http://fastpay-billing.net",
+  "website_host": "fastpay-billing.net",
+  "website_scheme": "http",
+  "monthly_budget_usd": 10000,
+  "budget_raw": "10000",
+  "budget_flag": "ok",
+  "message": "We spoke last month about the overdue invoice. Download the attached statement here to avoid service interruption: http://fastpay-billing.net/inv/8823.exe",
+  "urls": [
+    {
+      "raw": "http://fastpay-billing.net/inv/8823.exe",
+      "normalized": "http://fastpay-billing.net/inv/8823.exe",
+      "scheme": "http",
+      "host": "fastpay-billing.net",
+      "path": "/inv/8823.exe",
+      "dangerous_ext": true,
+      "non_ascii_host": false,
+      "rewrites": []
+    }
+  ],
+  "flags": [
+    "insecure_website_scheme",
+    "security_suspicious"
+  ],
+  "sanitization": {
+    "entities_decoded": 0,
+    "tags_stripped": 0,
+    "invisible_removed": 0,
+    "bidi_removed": 0,
+    "control_removed": 0
+  },
+  "forensics": {
+    "raw": {
+      "lead_id": "L-020",
+      "submitted_at": "2026-06-07T16:05:00Z",
+      "name": "Victor Ionescu",
+      "email": "victor@fastpay-billing.net",
+      "company": "FastPay Billing",
+      "website": "http://fastpay-billing.net",
+      "monthly_budget_usd": "10000",
+      "message": "We spoke last month about the overdue invoice. Download the attached statement here to avoid service interruption: http://fastpay-billing.net/inv/8823.exe",
+      "source": "contact_form"
+    }
+  },
+  "message_language": "en",
+  "intent": "none",
+  "intent_score": 0,
+  "growth_signal": false,
+  "verdict": {
+    "lead_id": "L-020",
+    "company": "FastPay Billing",
+    "name": "Victor Ionescu",
+    "email": "victor@fastpay-billing.net",
+    "email_class": "corporate",
+    "website_host": "fastpay-billing.net",
+    "budget_display": "$10,000/mo",
+    "budget_flag": "ok",
+    "source": "contact_form",
+    "submitted_at": "2026-06-07T16:05:00Z",
+    "submitted_at_valid": true,
+    "message": "We spoke last month about the overdue invoice. Download the attached statement here to avoid service interruption: http://fastpay-billing.net/inv/8823.exe",
+    "message_language": "en",
+    "urls": [
+      {
+        "raw": "http://fastpay-billing.net/inv/8823.exe",
+        "normalized": "http://fastpay-billing.net/inv/8823.exe",
+        "scheme": "http",
+        "host": "fastpay-billing.net",
+        "path": "/inv/8823.exe",
+        "dangerous_ext": true,
+        "non_ascii_host": false,
+        "rewrites": []
+      }
+    ],
+    "flags": [
+      "insecure_website_scheme",
+      "security_suspicious"
+    ],
+    "sanitization": {
+      "entities_decoded": 0,
+      "tags_stripped": 0,
+      "invisible_removed": 0,
+      "bidi_removed": 0,
+      "control_removed": 0
+    },
+    "intent": "none",
+    "thread_parent": null,
+    "decision": "ESCALATE",
+    "confidence": 0.95,
+    "reason": "Suspected phishing/malware delivery in the submission — route to security; do not reply, click, download, or enrich this row.",
+    "briefing": [
+      "Company: FastPay Billing — corporate email (fastpay-billing.net), website fastpay-billing.net, submitted via contact_form.",
+      "Stated budget: $10,000/mo (Observed — from the form field).",
+      "Estimated company revenue: $960,000-$2,400,000/yr (Assumed — $10,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing).",
+      "Single Grain fit: inside ICP — budget and intent support a sales conversation.",
+      "Risk flags: security_suspicious."
+    ],
+    "revenue_estimate": {
+      "low_usd": 960000,
+      "high_usd": 2400000,
+      "label": "Assumed",
+      "basis": "$10,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
+    },
+    "escalation_route": "security",
+    "review_recommendation": "Not Enough"
+  }
+}

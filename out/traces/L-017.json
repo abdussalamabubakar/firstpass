@@ -1,0 +1,88 @@
+{
+  "lead_id": "L-017",
+  "source": "referral",
+  "submitted_at": "2026-06-06T11:52:00Z",
+  "submitted_at_valid": true,
+  "name": "Amara Osei",
+  "email": "amara.osei@northpeakhealth.com",
+  "email_class": "corporate",
+  "email_domain": "northpeakhealth.com",
+  "company": "NorthPeak Health",
+  "website": "https://northpeakhealth.com",
+  "website_host": "northpeakhealth.com",
+  "website_scheme": "https",
+  "monthly_budget_usd": 15000,
+  "budget_raw": "15k",
+  "budget_flag": "ok",
+  "message": "Healthcare staffing platform. We need demand gen that respects compliance review on all ad copy. Team of 3 marketers in-house.",
+  "urls": [],
+  "flags": [],
+  "sanitization": {
+    "entities_decoded": 0,
+    "tags_stripped": 0,
+    "invisible_removed": 0,
+    "bidi_removed": 0,
+    "control_removed": 0
+  },
+  "forensics": {
+    "raw": {
+      "lead_id": "L-017",
+      "submitted_at": "2026-06-06T11:52:00Z",
+      "name": "Amara Osei",
+      "email": "amara.osei@northpeakhealth.com",
+      "company": "NorthPeak Health",
+      "website": "https://northpeakhealth.com",
+      "monthly_budget_usd": "15k",
+      "message": "Healthcare staffing platform. We need demand gen that respects compliance review on all ad copy. Team of 3 marketers in-house.",
+      "source": "referral"
+    }
+  },
+  "message_language": "en",
+  "intent": "commercial",
+  "intent_score": 2,
+  "growth_signal": false,
+  "verdict": {
+    "lead_id": "L-017",
+    "company": "NorthPeak Health",
+    "name": "Amara Osei",
+    "email": "amara.osei@northpeakhealth.com",
+    "email_class": "corporate",
+    "website_host": "northpeakhealth.com",
+    "budget_display": "$15,000/mo",
+    "budget_flag": "ok",
+    "source": "referral",
+    "submitted_at": "2026-06-06T11:52:00Z",
+    "submitted_at_valid": true,
+    "message": "Healthcare staffing platform. We need demand gen that respects compliance review on all ad copy. Team of 3 marketers in-house.",
+    "message_language": "en",
+    "urls": [],
+    "flags": [],
+    "sanitization": {
+      "entities_decoded": 0,
+      "tags_stripped": 0,
+      "invisible_removed": 0,
+      "bidi_removed": 0,
+      "control_removed": 0
+    },
+    "intent": "commercial",
+    "thread_parent": null,
+    "decision": "QUALIFY",
+    "confidence": 0.85,
+    "reason": "Strong commercial intent with stated budget $15,000/mo, inside the typical retainer range for an agency of this profile.",
+    "briefing": [
+      "Company: NorthPeak Health — corporate email (northpeakhealth.com), website northpeakhealth.com, submitted via referral.",
+      "Stated budget: $15,000/mo (Observed — from the form field).",
+      "Estimated company revenue: $1,440,000-$3,600,000/yr (Assumed — $15,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing).",
+      "Single Grain fit: inside ICP — budget and intent support a sales conversation.",
+      "Risk flags: none."
+    ],
+    "revenue_estimate": {
+      "low_usd": 1440000,
+      "high_usd": 3600000,
+      "label": "Assumed",
+      "basis": "$15,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
+    },
+    "escalation_route": null,
+    "review_recommendation": "Approved"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "lead_id": "L-012",
+  "source": "contact_form",
+  "submitted_at": null,
+  "submitted_at_valid": false,
+  "name": "Nora Haddad",
+  "email": "nora@finlitapp.com",
+  "email_class": "corporate",
+  "email_domain": "finlitapp.com",
+  "company": "FinLit",
+  "website": "https://finlitapp.com",
+  "website_host": "finlitapp.com",
+  "website_scheme": "https",
+  "monthly_budget_usd": 9000,
+  "budget_raw": "9000",
+  "budget_flag": "ok",
+  "message": "We teach personal finance to Gen Z. Want help with TikTok and YouTube growth.",
+  "urls": [],
+  "flags": [
+    "invalid_field:submitted_at"
+  ],
+  "sanitization": {
+    "entities_decoded": 0,
+    "tags_stripped": 0,
+    "invisible_removed": 0,
+    "bidi_removed": 0,
+    "control_removed": 0
+  },
+  "forensics": {
+    "raw": {
+      "lead_id": "L-012",
+      "submitted_at": "2026-13-45T99:99:00Z",
+      "name": "Nora Haddad",
+      "email": "nora@finlitapp.com",
+      "company": "FinLit",
+      "website": "https://finlitapp.com",
+      "monthly_budget_usd": "9000",
+      "message": "We teach personal finance to Gen Z. Want help with TikTok and YouTube growth.",
+      "source": "contact_form"
+    }
+  },
+  "message_language": "en",
+  "intent": "commercial",
+  "intent_score": 3,
+  "growth_signal": false,
+  "verdict": {
+    "lead_id": "L-012",
+    "company": "FinLit",
+    "name": "Nora Haddad",
+    "email": "nora@finlitapp.com",
+    "email_class": "corporate",
+    "website_host": "finlitapp.com",
+    "budget_display": "$9,000/mo",
+    "budget_flag": "ok",
+    "source": "contact_form",
+    "submitted_at": null,
+    "submitted_at_valid": false,
+    "message": "We teach personal finance to Gen Z. Want help with TikTok and YouTube growth.",
+    "message_language": "en",
+    "urls": [],
+    "flags": [
+      "invalid_field:submitted_at"
+    ],
+    "sanitization": {
+      "entities_decoded": 0,
+      "tags_stripped": 0,
+      "invisible_removed": 0,
+      "bidi_removed": 0,
+      "control_removed": 0
+    },
+    "intent": "commercial",
+    "thread_parent": null,
+    "decision": "QUALIFY",
+    "confidence": 0.65,
+    "reason": "Stated budget $9,000/mo in the entry-retainer range with a clear ask — worth a discovery call.",
+    "briefing": [
+      "Company: FinLit — corporate email (finlitapp.com), website finlitapp.com, submitted via contact_form.",
+      "Stated budget: $9,000/mo (Observed — from the form field).",
+      "Estimated company revenue: $864,000-$2,160,000/yr (Assumed — $9,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing).",
+      "Single Grain fit: inside ICP — budget and intent support a sales conversation.",
+      "Risk flags: none."
+    ],
+    "revenue_estimate": {
+      "low_usd": 864000,
+      "high_usd": 2160000,
+      "label": "Assumed",
+      "basis": "$9,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
+    },
+    "escalation_route": null,
+    "review_recommendation": "Approved"
+  }
+}

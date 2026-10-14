@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>firstpass — Lead Review</title>
+<style>
+  :root {
+    --bg: #f5f6f8; --card: #ffffff; --ink: #1c2733; --muted: #5b6b7b;
+    --line: #e3e8ee; --accent: #1f6feb; --ok: #1a7f37; --warn: #b7791f;
+    --bad: #b42318; --esc: #6941c6;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--ink); }
+  header { background: #101828; color: #fff; padding: 18px 28px; }
+  header h1 { margin: 0; font-size: 20px; }
+  header p { margin: 4px 0 0; color: #b9c2cf; font-size: 13px; }
+  main { max-width: 1080px; margin: 0 auto; padding: 24px 20px 80px; }
+  .counts { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .chip { background: var(--card); border: 1px solid var(--line); border-radius: 999px;
+          padding: 6px 14px; font-size: 13px; color: var(--muted); }
+  .chip b { color: var(--ink); }
+  h2 { font-size: 16px; margin: 30px 0 12px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(460px, 1fr)); gap: 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+  .card.escalate-card { border-left: 4px solid var(--esc); }
+  .top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .company { font-size: 17px; font-weight: 650; }
+  .badge { font-size: 11px; font-weight: 700; letter-spacing: .4px; border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+  .badge.QUALIFY { background: #e6f4ea; color: var(--ok); }
+  .badge.NURTURE { background: #fdf3e0; color: var(--warn); }
+  .badge.REJECT { background: #fdecea; color: var(--bad); }
+  .badge.ESCALATE { background: #efe9fd; color: var(--esc); }
+  .meta { color: var(--muted); font-size: 12.5px; margin: 4px 0 10px; }
+  .briefing { margin: 0 0 10px; padding-left: 18px; }
+  .briefing li { font-size: 13px; margin-bottom: 4px; }
+  .reason { font-size: 13px; background: #f2f5f9; border-radius: 8px; padding: 9px 11px; margin-bottom: 10px; }
+  .flags { margin-bottom: 10px; }
+  .flag { display: inline-block; font-size: 11px; font-family: Consolas, monospace; background: #eef1f5;
+          border: 1px solid var(--line); border-radius: 6px; padding: 2px 7px; margin: 2px 4px 2px 0; color: #45535f; }
+  .flag.hot { background: #fdecea; border-color: #f4c7c3; color: var(--bad); }
+  .route { font-size: 13px; color: var(--esc); font-weight: 600; margin-bottom: 8px; }
+  .decide { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .decide button { border: 1px solid var(--line); background: #fff; border-radius: 8px;
+                   padding: 7px 14px; font-size: 13px; cursor: pointer; font-weight: 600; }
+  .decide button:hover { border-color: var(--accent); color: var(--accent); }
+  .decide button:disabled { opacity: .45; cursor: default; }
+  .decide input { flex: 1; min-width: 140px; border: 1px solid var(--line); border-radius: 8px;
+                  padding: 7px 10px; font-size: 13px; }
+  .status { font-size: 12.5px; margin-left: 4px; }
+  .status.ok { color: var(--ok); } .status.err { color: var(--bad); }
+  .finalized { color: var(--ok); font-size: 13px; font-weight: 600; }
+  .trace-link { font-size: 12px; color: var(--accent); text-decoration: none; }
+  footer { color: var(--muted); font-size: 12px; text-align: center; margin-top: 40px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>firstpass — Lead Review</h1>
+  <p>The agent did the first pass. You make the call. Verdicts are recommendations; nothing is final until you click.</p>
+</header>
+<main>
+  <div class="counts">
+    <span class="chip">Total <b>{{ total }}</b></span>
+    {% for decision, count in counts.items() %}
+      <span class="chip">{{ decision }} <b>{{ count }}</b></span>
+    {% endfor %}
+  </div>
+
+  <h2>Sales queue — reviewer decides</h2>
+  <div class="grid">
+    {% for card in sales %}
+    <div class="card" id="card-{{ card.lead_id }}">
+      <div class="top">
+        <span class="company">{{ card.company }}</span>
+        <span class="badge {{ card.decision }}">{{ card.decision }} · {{ "%.2f"|format(card.confidence) }}</span>
+      </div>
+      <div class="meta">
+        {{ card.name }} · {{ card.email }} ({{ card.email_class }}) ·
+        {{ card.website_host or 'no website' }} · budget {{ card.budget_display }} ·
+        via {{ card.source }}{% if card.message_language == 'es' %} · <b>Spanish message</b>{% endif %}
+        {% if card.thread_parent %} · thread of {{ card.thread_parent }}{% endif %}
+      </div>
+      <ul class="briefing">
+        {% for bullet in card.briefing %}<li>{{ bullet }}</li>{% endfor %}
+      </ul>
+      <div class="reason"><b>Agent reasoning:</b> {{ card.reason }}</div>
+      {% if card.flags %}
+      <div class="flags">
+        {% for flag in card.flags %}<span class="flag {% if flag in ['injection_attempt','security_suspicious','sensitive_request','junk','competitor_fishing','signal_conflict','pressure_tactics','obfuscated_content'] %}hot{% endif %}">{{ flag }}</span>{% endfor %}
+      </div>
+      {% endif %}
+      {% if card.lead_id in existing %}
+        <span class="finalized">Finalized by reviewer: {{ existing[card.lead_id].human_choice }} → {{ existing[card.lead_id].final_decision }}</span>
+      {% else %}
+      <div class="decide" data-lead="{{ card.lead_id }}">
+        <button data-choice="approved">Approved</button>
+        <button data-choice="not_approved">Not Approved</button>
+        <button data-choice="not_enough">Not Enough</button>
+        <input type="text" placeholder="optional note" aria-label="review note">
+        <span class="status"></span>
+      </div>
+      {% endif %}
+      <div style="margin-top:8px;"><a class="trace-link" href="/trace/{{ card.lead_id }}" target="_blank">inspect full trace (raw vs sanitized)</a></div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <h2>Escalation queue — handled by the right human, not sales review</h2>
+  <div class="grid">
+    {% for card in escalations %}
+    <div class="card escalate-card">
+      <div class="top">
+        <span class="company">{{ card.company }}</span>
+        <span class="badge ESCALATE">ESCALATE · {{ "%.2f"|format(card.confidence) }}</span>
+      </div>
+      {% if card.route_label %}<div class="route">{{ card.route_label }}</div>{% endif %}
+      <div class="meta">{{ card.name }} · {{ card.email }} · via {{ card.source }}</div>
+      <div class="reason"><b>Agent reasoning:</b> {{ card.reason }}</div>
+      {% if card.flags %}
+      <div class="flags">
+        {% for flag in card.flags %}<span class="flag hot">{{ flag }}</span>{% endfor %}
+      </div>
+      {% endif %}
+      <div style="margin-top:8px;"><a class="trace-link" href="/trace/{{ card.lead_id }}" target="_blank">inspect full trace</a></div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <footer>firstpass — the agent does the first pass; humans do the thinking that AI can't.</footer>
+</main>
+<script>
+document.querySelectorAll(".decide").forEach(function (row) {
+  var leadId = row.dataset.lead;
+  var status = row.querySelector(".status");
+  var noteInput = row.querySelector("input");
+  row.querySelectorAll("button").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      row.querySelectorAll("button").forEach(function (b) { b.disabled = true; });
+      status.textContent = "saving…";
+      status.className = "status";
+      fetch("/api/decide/" + encodeURIComponent(leadId), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ choice: btn.dataset.choice, note: noteInput.value })
+      })
+      .then(function (resp) { return resp.json().then(function (body) { return { ok: resp.ok, body: body }; }); })
+      .then(function (result) {
+        if (result.ok) {
+          status.textContent = "Finalized → " + result.body.final_decision;
+          status.className = "status ok";
+          noteInput.disabled = true;
+        } else {
+          status.textContent = result.body.error || "failed";
+          status.className = "status err";
+          row.querySelectorAll("button").forEach(function (b) { b.disabled = false; });
+        }
+      })
+      .catch(function () {
+        status.textContent = "network error";
+        status.className = "status err";
+        row.querySelectorAll("button").forEach(function (b) { b.disabled = false; });
+      });
+    });
+  });
+});
+</script>
+</body>
+</html>

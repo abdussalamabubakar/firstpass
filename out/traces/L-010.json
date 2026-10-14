@@ -1,0 +1,96 @@
+{
+  "lead_id": "L-010",
+  "source": "contact_form",
+  "submitted_at": "2026-06-04T12:00:00Z",
+  "submitted_at_valid": true,
+  "name": "test",
+  "email": "asdf@asdf.com",
+  "email_class": "corporate",
+  "email_domain": "asdf.com",
+  "company": "asdf",
+  "website": "",
+  "website_host": null,
+  "website_scheme": null,
+  "monthly_budget_usd": 999999,
+  "budget_raw": "999999",
+  "budget_flag": "implausible",
+  "message": "asdfasdf",
+  "urls": [],
+  "flags": [
+    "missing_field:website",
+    "budget:implausible",
+    "junk"
+  ],
+  "sanitization": {
+    "entities_decoded": 0,
+    "tags_stripped": 0,
+    "invisible_removed": 0,
+    "bidi_removed": 0,
+    "control_removed": 0
+  },
+  "forensics": {
+    "raw": {
+      "lead_id": "L-010",
+      "submitted_at": "2026-06-04T12:00:00Z",
+      "name": "test",
+      "email": "asdf@asdf.com",
+      "company": "asdf",
+      "website": "",
+      "monthly_budget_usd": "999999",
+      "message": "asdfasdf",
+      "source": "contact_form"
+    }
+  },
+  "message_language": "unknown",
+  "intent": "none",
+  "intent_score": 0,
+  "growth_signal": false,
+  "verdict": {
+    "lead_id": "L-010",
+    "company": "asdf",
+    "name": "test",
+    "email": "asdf@asdf.com",
+    "email_class": "corporate",
+    "website_host": null,
+    "budget_display": "$999,999/mo",
+    "budget_flag": "implausible",
+    "source": "contact_form",
+    "submitted_at": "2026-06-04T12:00:00Z",
+    "submitted_at_valid": true,
+    "message": "asdfasdf",
+    "message_language": "unknown",
+    "urls": [],
+    "flags": [
+      "missing_field:website",
+      "budget:implausible",
+      "junk"
+    ],
+    "sanitization": {
+      "entities_decoded": 0,
+      "tags_stripped": 0,
+      "invisible_removed": 0,
+      "bidi_removed": 0,
+      "control_removed": 0
+    },
+    "intent": "none",
+    "thread_parent": null,
+    "decision": "REJECT",
+    "confidence": 0.8,
+    "reason": "Submission matches junk heuristics (placeholder identity, low-signal message, implausible budget) — no sales follow-up.",
+    "briefing": [
+      "Company: asdf — corporate email (asdf.com), website not provided, submitted via contact_form.",
+      "Stated budget: $999,999/mo (Observed — from the form field).",
+      "Estimated company revenue: $95,999,904-$239,999,760/yr (Assumed — $999,999/mo stated agency budget x assumed 5-12% of revenue spent on marketing).",
+      "Single Grain fit: inside ICP — budget and intent support a sales conversation.",
+      "Risk flags: junk."
+    ],
+    "revenue_estimate": {
+      "low_usd": 95999904,
+      "high_usd": 239999760,
+      "label": "Assumed",
+      "basis": "$999,999/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
+    },
+    "escalation_route": null,
+    "review_recommendation": "Not Approved"
+  }
+}

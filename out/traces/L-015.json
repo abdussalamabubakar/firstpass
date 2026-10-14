@@ -1,0 +1,97 @@
+{
+  "lead_id": "L-015",
+  "source": "contact_form",
+  "submitted_at": "2026-06-05T17:44:00Z",
+  "submitted_at_valid": true,
+  "name": "Marcus Lee",
+  "email": "marcus.lee.2027@stateuniv.edu",
+  "email_class": "corporate",
+  "email_domain": "stateuniv.edu",
+  "company": "",
+  "website": "",
+  "website_host": null,
+  "website_scheme": null,
+  "monthly_budget_usd": 2500,
+  "budget_raw": "2500",
+  "budget_flag": "ok",
+  "message": "Different ask than my last message - my family's restaurant group actually needs local SEO help and has budget. 4 locations.",
+  "urls": [],
+  "flags": [
+    "missing_field:company",
+    "missing_field:website",
+    "thread_followup_of:L-002"
+  ],
+  "sanitization": {
+    "entities_decoded": 0,
+    "tags_stripped": 0,
+    "invisible_removed": 0,
+    "bidi_removed": 0,
+    "control_removed": 0
+  },
+  "forensics": {
+    "raw": {
+      "lead_id": "L-015",
+      "submitted_at": "2026-06-05T17:44:00Z",
+      "name": "Marcus Lee",
+      "email": "marcus.lee.2027@stateuniv.edu",
+      "company": "",
+      "website": "",
+      "monthly_budget_usd": "2500",
+      "message": "Different ask than my last message - my family's restaurant group actually needs local SEO help and has budget. 4 locations.",
+      "source": "contact_form"
+    }
+  },
+  "message_language": "en",
+  "intent": "commercial",
+  "intent_score": 2,
+  "growth_signal": false,
+  "thread_parent": "L-002",
+  "verdict": {
+    "lead_id": "L-015",
+    "company": "(not given)",
+    "name": "Marcus Lee",
+    "email": "marcus.lee.2027@stateuniv.edu",
+    "email_class": "corporate",
+    "website_host": null,
+    "budget_display": "$2,500/mo",
+    "budget_flag": "ok",
+    "source": "contact_form",
+    "submitted_at": "2026-06-05T17:44:00Z",
+    "submitted_at_valid": true,
+    "message": "Different ask than my last message - my family's restaurant group actually needs local SEO help and has budget. 4 locations.",
+    "message_language": "en",
+    "urls": [],
+    "flags": [
+      "missing_field:company",
+      "missing_field:website",
+      "thread_followup_of:L-002"
+    ],
+    "sanitization": {
+      "entities_decoded": 0,
+      "tags_stripped": 0,
+      "invisible_removed": 0,
+      "bidi_removed": 0,
+      "control_removed": 0
+    },
+    "intent": "commercial",
+    "thread_parent": "L-002",
+    "decision": "NURTURE",
+    "confidence": 0.7,
+    "reason": "Thread follow-up from the same contact as L-002: stated budget $2,500/mo is below typical retainers but the intent is real (4 locations broaden the engagement scope) — nurture and revisit.",
+    "briefing": [
+      "Company: (company not given) — corporate email (stateuniv.edu), website not provided, submitted via contact_form.",
+      "Stated budget: $2,500/mo (Observed — from the form field).",
+      "Estimated company revenue: $240,000-$600,000/yr (Assumed — $2,500/mo stated agency budget x assumed 5-12% of revenue spent on marketing).",
+      "Single Grain fit: real but early — keep warm in nurture rather than spending sales time now.",
+      "Risk flags: thread_followup_of:L-002."
+    ],
+    "revenue_estimate": {
+      "low_usd": 240000,
+      "high_usd": 600000,
+      "label": "Assumed",
+      "basis": "$2,500/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
+    },
+    "escalation_route": null,
+    "review_recommendation": "Not Approved (nurture)"
+  }
+}

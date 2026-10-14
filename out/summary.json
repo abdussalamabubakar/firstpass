@@ -1,0 +1,99 @@
+{
+  "input_file": "fixtures\\inbound_leads.csv",
+  "input_sha256": "cc1927ca771c37b186a2abdb7b9757594da79ec6dda074e5a514dd2761cc8599",
+  "generated_at": "2026-10-14T22:18:32+00:00",
+  "llm_used": false,
+  "llm_error": null,
+  "total_leads": 20,
+  "decisions": {
+    "QUALIFY": 8,
+    "REJECT": 5,
+    "NURTURE": 3,
+    "ESCALATE": 4
+  },
+  "flags_seen": {
+    "missing_field:company": 4,
+    "missing_field:website": 6,
+    "thread_followup_of:L-001": 1,
+    "missing_field:email": 1,
+    "budget:unspecified": 1,
+    "injection_attempt": 1,
+    "signal_conflict": 1,
+    "pressure_tactics": 2,
+    "budget:implausible": 1,
+    "junk": 1,
+    "competitor_fishing": 2,
+    "invalid_field:submitted_at": 1,
+    "thread_followup_of:L-002": 1,
+    "missing_field:message": 1,
+    "sensitive_request": 1,
+    "insecure_website_scheme": 1,
+    "security_suspicious": 1
+  },
+  "traps_found": [
+    {
+      "lead_id": "L-003",
+      "flags": [
+        "thread_followup_of:L-001"
+      ]
+    },
+    {
+      "lead_id": "L-006",
+      "flags": [
+        "injection_attempt"
+      ]
+    },
+    {
+      "lead_id": "L-007",
+      "flags": [
+        "signal_conflict"
+      ]
+    },
+    {
+      "lead_id": "L-008",
+      "flags": [
+        "pressure_tactics"
+      ]
+    },
+    {
+      "lead_id": "L-010",
+      "flags": [
+        "junk"
+      ]
+    },
+    {
+      "lead_id": "L-011",
+      "flags": [
+        "competitor_fishing"
+      ]
+    },
+    {
+      "lead_id": "L-013",
+      "flags": [
+        "competitor_fishing",
+        "pressure_tactics"
+      ]
+    },
+    {
+      "lead_id": "L-015",
+      "flags": [
+        "thread_followup_of:L-002"
+      ]
+    },
+    {
+      "lead_id": "L-019",
+      "flags": [
+        "sensitive_request"
+      ]
+    },
+    {
+      "lead_id": "L-020",
+      "flags": [
+        "security_suspicious"
+      ]
+    }
+  ],
+  "elapsed_ms": 13.2,
+  "ms_per_lead": 0.66,
+  "verdict_ms_per_lead": 0.04
+}

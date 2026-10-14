@@ -1,0 +1,93 @@
+{
+  "lead_id": "L-003",
+  "source": "contact_form",
+  "submitted_at": "2026-06-01T13:40:00Z",
+  "submitted_at_valid": true,
+  "name": "D. Reyes",
+  "email": "dana.reyes@brightcart.io",
+  "email_class": "corporate",
+  "email_domain": "brightcart.io",
+  "company": "Bright Cart Inc",
+  "website": "https://brightcart.io",
+  "website_host": "brightcart.io",
+  "website_scheme": "https",
+  "monthly_budget_usd": 25000,
+  "budget_raw": "25000",
+  "budget_flag": "ok",
+  "message": "Following up on my earlier note - also interested in SEO if the paid engagement goes well.",
+  "urls": [],
+  "flags": [
+    "thread_followup_of:L-001"
+  ],
+  "sanitization": {
+    "entities_decoded": 0,
+    "tags_stripped": 0,
+    "invisible_removed": 0,
+    "bidi_removed": 0,
+    "control_removed": 0
+  },
+  "forensics": {
+    "raw": {
+      "lead_id": "L-003",
+      "submitted_at": "2026-06-01T13:40:00Z",
+      "name": "D. Reyes",
+      "email": "dana.reyes@brightcart.io",
+      "company": "Bright Cart Inc",
+      "website": "https://brightcart.io",
+      "monthly_budget_usd": "25000",
+      "message": "Following up on my earlier note - also interested in SEO if the paid engagement goes well.",
+      "source": "contact_form"
+    }
+  },
+  "message_language": "en",
+  "intent": "commercial",
+  "intent_score": 1,
+  "growth_signal": false,
+  "thread_parent": "L-001",
+  "verdict": {
+    "lead_id": "L-003",
+    "company": "Bright Cart Inc",
+    "name": "D. Reyes",
+    "email": "dana.reyes@brightcart.io",
+    "email_class": "corporate",
+    "website_host": "brightcart.io",
+    "budget_display": "$25,000/mo",
+    "budget_flag": "ok",
+    "source": "contact_form",
+    "submitted_at": "2026-06-01T13:40:00Z",
+    "submitted_at_valid": true,
+    "message": "Following up on my earlier note - also interested in SEO if the paid engagement goes well.",
+    "message_language": "en",
+    "urls": [],
+    "flags": [
+      "thread_followup_of:L-001"
+    ],
+    "sanitization": {
+      "entities_decoded": 0,
+      "tags_stripped": 0,
+      "invisible_removed": 0,
+      "bidi_removed": 0,
+      "control_removed": 0
+    },
+    "intent": "commercial",
+    "thread_parent": "L-001",
+    "decision": "QUALIFY",
+    "confidence": 0.85,
+    "reason": "Thread follow-up from the same contact as L-001: strong commercial intent with stated budget $25,000/mo, inside the typical retainer range for an agency of this profile.",
+    "briefing": [
+      "Company: Bright Cart Inc — corporate email (brightcart.io), website brightcart.io, submitted via contact_form.",
+      "Stated budget: $25,000/mo (Observed — from the form field).",
+      "Estimated company revenue: $2,400,000-$6,000,000/yr (Assumed — $25,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing).",
+      "Single Grain fit: inside ICP — budget and intent support a sales conversation.",
+      "Risk flags: thread_followup_of:L-001."
+    ],
+    "revenue_estimate": {
+      "low_usd": 2400000,
+      "high_usd": 6000000,
+      "label": "Assumed",
+      "basis": "$25,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
+    },
+    "escalation_route": null,
+    "review_recommendation": "Approved"
+  }
+}

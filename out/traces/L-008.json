@@ -1,0 +1,96 @@
+{
+  "lead_id": "L-008",
+  "source": "contact_form",
+  "submitted_at": "2026-06-03T14:11:00Z",
+  "submitted_at_valid": true,
+  "name": "Rick Alvarez",
+  "email": "rickalvarez88@gmail.com",
+  "email_class": "free",
+  "email_domain": "gmail.com",
+  "company": "",
+  "website": "",
+  "website_host": null,
+  "website_scheme": null,
+  "monthly_budget_usd": 40000,
+  "budget_raw": "40000",
+  "budget_flag": "ok",
+  "message": "VP of Growth at a Fortune 500 retailer. Can't share the company name yet. Ready to sign this week if the price is right.",
+  "urls": [],
+  "flags": [
+    "missing_field:company",
+    "missing_field:website",
+    "pressure_tactics"
+  ],
+  "sanitization": {
+    "entities_decoded": 0,
+    "tags_stripped": 0,
+    "invisible_removed": 0,
+    "bidi_removed": 0,
+    "control_removed": 0
+  },
+  "forensics": {
+    "raw": {
+      "lead_id": "L-008",
+      "submitted_at": "2026-06-03T14:11:00Z",
+      "name": "Rick Alvarez",
+      "email": "rickalvarez88@gmail.com",
+      "company": "",
+      "website": "",
+      "monthly_budget_usd": "40000",
+      "message": "VP of Growth at a Fortune 500 retailer. Can't share the company name yet. Ready to sign this week if the price is right.",
+      "source": "contact_form"
+    }
+  },
+  "message_language": "en",
+  "intent": "none",
+  "intent_score": 0,
+  "growth_signal": false,
+  "verdict": {
+    "lead_id": "L-008",
+    "company": "(not given)",
+    "name": "Rick Alvarez",
+    "email": "rickalvarez88@gmail.com",
+    "email_class": "free",
+    "website_host": null,
+    "budget_display": "$40,000/mo",
+    "budget_flag": "ok",
+    "source": "contact_form",
+    "submitted_at": "2026-06-03T14:11:00Z",
+    "submitted_at_valid": true,
+    "message": "VP of Growth at a Fortune 500 retailer. Can't share the company name yet. Ready to sign this week if the price is right.",
+    "message_language": "en",
+    "urls": [],
+    "flags": [
+      "missing_field:company",
+      "missing_field:website",
+      "pressure_tactics"
+    ],
+    "sanitization": {
+      "entities_decoded": 0,
+      "tags_stripped": 0,
+      "invisible_removed": 0,
+      "bidi_removed": 0,
+      "control_removed": 0
+    },
+    "intent": "none",
+    "thread_parent": null,
+    "decision": "ESCALATE",
+    "confidence": 0.8,
+    "reason": "High stated budget but unverifiable identity (free-mail address, no company/website) — verify who this is before committing sales time.",
+    "briefing": [
+      "Company: (company not given) — free email (gmail.com), website not provided, submitted via contact_form.",
+      "Stated budget: $40,000/mo (Observed — from the form field).",
+      "Estimated company revenue: $150,000,000-$300,000,000/yr (Assumed — 1,000 employees (stated in message) x assumed $150k-$300k revenue/employee).",
+      "Single Grain fit: inside ICP — budget and intent support a sales conversation.",
+      "Risk flags: pressure_tactics."
+    ],
+    "revenue_estimate": {
+      "low_usd": 150000000,
+      "high_usd": 300000000,
+      "label": "Assumed",
+      "basis": "1,000 employees (stated in message) x assumed $150k-$300k revenue/employee"
+    },
+    "escalation_route": "identity_verification",
+    "review_recommendation": "Not Enough"
+  }
+}

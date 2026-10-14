@@ -1,0 +1,88 @@
+{
+  "lead_id": "L-009",
+  "source": "contact_form",
+  "submitted_at": "2026-06-04T07:55:00Z",
+  "submitted_at_valid": true,
+  "name": "Lucía Fernández",
+  "email": "lucia@tiendaverde.mx",
+  "email_class": "corporate",
+  "email_domain": "tiendaverde.mx",
+  "company": "Tienda Verde",
+  "website": "https://tiendaverde.mx",
+  "website_host": "tiendaverde.mx",
+  "website_scheme": "https",
+  "monthly_budget_usd": 18000,
+  "budget_raw": "18000",
+  "budget_flag": "ok",
+  "message": "Somos un marketplace en crecimiento en México. Buscamos una agencia para SEO internacional y contenido en español e inglés. Tenemos presupuesto aprobado para este trimestre.",
+  "urls": [],
+  "flags": [],
+  "sanitization": {
+    "entities_decoded": 0,
+    "tags_stripped": 0,
+    "invisible_removed": 0,
+    "bidi_removed": 0,
+    "control_removed": 0
+  },
+  "forensics": {
+    "raw": {
+      "lead_id": "L-009",
+      "submitted_at": "2026-06-04T07:55:00Z",
+      "name": "Lucía Fernández",
+      "email": "lucia@tiendaverde.mx",
+      "company": "Tienda Verde",
+      "website": "https://tiendaverde.mx",
+      "monthly_budget_usd": "18000",
+      "message": "Somos un marketplace en crecimiento en México. Buscamos una agencia para SEO internacional y contenido en español e inglés. Tenemos presupuesto aprobado para este trimestre.",
+      "source": "contact_form"
+    }
+  },
+  "message_language": "es",
+  "intent": "commercial",
+  "intent_score": 1,
+  "growth_signal": false,
+  "verdict": {
+    "lead_id": "L-009",
+    "company": "Tienda Verde",
+    "name": "Lucía Fernández",
+    "email": "lucia@tiendaverde.mx",
+    "email_class": "corporate",
+    "website_host": "tiendaverde.mx",
+    "budget_display": "$18,000/mo",
+    "budget_flag": "ok",
+    "source": "contact_form",
+    "submitted_at": "2026-06-04T07:55:00Z",
+    "submitted_at_valid": true,
+    "message": "Somos un marketplace en crecimiento en México. Buscamos una agencia para SEO internacional y contenido en español e inglés. Tenemos presupuesto aprobado para este trimestre.",
+    "message_language": "es",
+    "urls": [],
+    "flags": [],
+    "sanitization": {
+      "entities_decoded": 0,
+      "tags_stripped": 0,
+      "invisible_removed": 0,
+      "bidi_removed": 0,
+      "control_removed": 0
+    },
+    "intent": "commercial",
+    "thread_parent": null,
+    "decision": "QUALIFY",
+    "confidence": 0.85,
+    "reason": "Strong commercial intent with stated budget $18,000/mo, inside the typical retainer range for an agency of this profile.",
+    "briefing": [
+      "Company: Tienda Verde — corporate email (tiendaverde.mx), website tiendaverde.mx, submitted via contact_form.",
+      "Stated budget: $18,000/mo (Observed — from the form field).",
+      "Estimated company revenue: $1,728,000-$4,320,000/yr (Assumed — $18,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing).",
+      "Single Grain fit: inside ICP — budget and intent support a sales conversation.",
+      "Risk flags: none."
+    ],
+    "revenue_estimate": {
+      "low_usd": 1728000,
+      "high_usd": 4320000,
+      "label": "Assumed",
+      "basis": "$18,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
+    },
+    "escalation_route": null,
+    "review_recommendation": "Approved"
+  }
+}

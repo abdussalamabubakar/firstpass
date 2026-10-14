@@ -1,0 +1,38 @@
+firstpass run — 2026-10-14T22:18:32+00:00
+input: fixtures\inbound_leads.csv
+input sha256: cc1927ca771c37b186a2abdb7b9757594da79ec6dda074e5a514dd2761cc8599
+llm: deterministic engine (no LLM)
+leads: 20 | ESCALATE=4 NURTURE=3 QUALIFY=8 REJECT=5
+trap rows surfaced: 10
+  L-003: thread_followup_of:L-001
+  L-006: injection_attempt
+  L-007: signal_conflict
+  L-008: pressure_tactics
+  L-010: junk
+  L-011: competitor_fishing
+  L-013: competitor_fishing, pressure_tactics
+  L-015: thread_followup_of:L-002
+  L-019: sensitive_request
+  L-020: security_suspicious
+timing: 13.2 ms total, 0.66 ms/lead (observed)
+per lead:
+  [L-001] QUALIFY conf=0.9 flags=- :: Strong commercial intent with stated budget $25,000/mo, inside the typical retainer range for an agency of this profile.
+  [L-002] REJECT conf=0.9 flags=missing_field:company,missing_field:website :: No commercial intent — this is a career/mentorship request, not a lead.
+  [L-003] QUALIFY conf=0.85 flags=thread_followup_of:L-001 :: Thread follow-up from the same contact as L-001: strong commercial intent with stated budget $25,000/mo, inside the typical retainer range for an agency of this profile.
+  [L-004] QUALIFY conf=0.75 flags=missing_field:email :: Strong commercial intent with stated budget $12,000/mo, inside the typical retainer range for an agency of this profile.
+  [L-005] NURTURE conf=0.7 flags=budget:unspecified :: Real commercial interest but budget unspecified — needs a discovery/education call before qualification.
+  [L-006] REJECT conf=0.5 flags=injection_attempt :: Stated budget $500/mo is below the service floor and the message carried a manipulation attempt, so its claims (unlimited budget, pre-approved contract) were discarded as unverified.
+  [L-007] ESCALATE conf=0.8 flags=signal_conflict :: Conflicting signals (stated budget contradicts company profile) — a human should verify the data before any sales decision.
+  [L-008] ESCALATE conf=0.8 flags=missing_field:company,missing_field:website,pressure_tactics :: High stated budget but unverifiable identity (free-mail address, no company/website) — verify who this is before committing sales time.
+  [L-009] QUALIFY conf=0.85 flags=- :: Strong commercial intent with stated budget $18,000/mo, inside the typical retainer range for an agency of this profile.
+  [L-010] REJECT conf=0.8 flags=missing_field:website,budget:implausible,junk :: Submission matches junk heuristics (placeholder identity, low-signal message, implausible budget) — no sales follow-up.
+  [L-011] REJECT conf=0.65 flags=competitor_fishing :: Message reads as peer-agency/competitive research rather than buying intent — not a sales call; a human can route it to partnerships if desired.
+  [L-012] QUALIFY conf=0.65 flags=invalid_field:submitted_at :: Stated budget $9,000/mo in the entry-retainer range with a clear ask — worth a discovery call.
+  [L-013] REJECT conf=0.75 flags=missing_field:website,competitor_fishing,pressure_tactics :: Message reads as peer-agency/competitive research rather than buying intent and the email is disposable — not a sales call; a human can route it to partnerships if desired.
+  [L-014] NURTURE conf=0.75 flags=- :: Stated budget $3,000/mo is below typical retainers but the intent is real (clear growth signal suggests budget will grow) — nurture and revisit.
+  [L-015] NURTURE conf=0.7 flags=missing_field:company,missing_field:website,thread_followup_of:L-002 :: Thread follow-up from the same contact as L-002: stated budget $2,500/mo is below typical retainers but the intent is real (4 locations broaden the engagement scope) — nurture and revisit.
+  [L-016] QUALIFY conf=0.7 flags=- :: Stated budget $6,000/mo in the entry-retainer range with a clear ask — worth a discovery call.
+  [L-017] QUALIFY conf=0.85 flags=- :: Strong commercial intent with stated budget $15,000/mo, inside the typical retainer range for an agency of this profile.
+  [L-018] QUALIFY conf=0.6 flags=missing_field:message :: No message content was submitted — this decision rests only on the verifiable form fields (stated budget $22,000/mo, corporate email, website provided); confirm the actual needs on first contact.
+  [L-019] ESCALATE conf=0.95 flags=missing_field:company,missing_field:website,sensitive_request :: Legal/data-protection request (possible GDPR erasure), not a sales lead — route to privacy/compliance and pause all marketing processing for this contact.
+  [L-020] ESCALATE conf=0.95 flags=insecure_website_scheme,security_suspicious :: Suspected phishing/malware delivery in the submission — route to security; do not reply, click, download, or enrich this row.

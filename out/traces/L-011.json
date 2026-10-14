@@ -1,0 +1,92 @@
+{
+  "lead_id": "L-011",
+  "source": "contact_form",
+  "submitted_at": "2026-06-04T15:37:00Z",
+  "submitted_at_valid": true,
+  "name": "Sam Whitfield",
+  "email": "sam@apexdigitalpartners.com",
+  "email_class": "corporate",
+  "email_domain": "apexdigitalpartners.com",
+  "company": "Apex Digital Partners",
+  "website": "https://apexdigitalpartners.com",
+  "website_host": "apexdigitalpartners.com",
+  "website_scheme": "https",
+  "monthly_budget_usd": 30000,
+  "budget_raw": "30000",
+  "budget_flag": "ok",
+  "message": "Curious how you structure retainers and what deliverables you include at each tier. Putting together a comparison for a client of ours.",
+  "urls": [],
+  "flags": [
+    "competitor_fishing"
+  ],
+  "sanitization": {
+    "entities_decoded": 0,
+    "tags_stripped": 0,
+    "invisible_removed": 0,
+    "bidi_removed": 0,
+    "control_removed": 0
+  },
+  "forensics": {
+    "raw": {
+      "lead_id": "L-011",
+      "submitted_at": "2026-06-04T15:37:00Z",
+      "name": "Sam Whitfield",
+      "email": "sam@apexdigitalpartners.com",
+      "company": "Apex Digital Partners",
+      "website": "https://apexdigitalpartners.com",
+      "monthly_budget_usd": "30000",
+      "message": "Curious how you structure retainers and what deliverables you include at each tier. Putting together a comparison for a client of ours.",
+      "source": "contact_form"
+    }
+  },
+  "message_language": "en",
+  "intent": "commercial",
+  "intent_score": 1,
+  "growth_signal": false,
+  "verdict": {
+    "lead_id": "L-011",
+    "company": "Apex Digital Partners",
+    "name": "Sam Whitfield",
+    "email": "sam@apexdigitalpartners.com",
+    "email_class": "corporate",
+    "website_host": "apexdigitalpartners.com",
+    "budget_display": "$30,000/mo",
+    "budget_flag": "ok",
+    "source": "contact_form",
+    "submitted_at": "2026-06-04T15:37:00Z",
+    "submitted_at_valid": true,
+    "message": "Curious how you structure retainers and what deliverables you include at each tier. Putting together a comparison for a client of ours.",
+    "message_language": "en",
+    "urls": [],
+    "flags": [
+      "competitor_fishing"
+    ],
+    "sanitization": {
+      "entities_decoded": 0,
+      "tags_stripped": 0,
+      "invisible_removed": 0,
+      "bidi_removed": 0,
+      "control_removed": 0
+    },
+    "intent": "commercial",
+    "thread_parent": null,
+    "decision": "REJECT",
+    "confidence": 0.65,
+    "reason": "Message reads as peer-agency/competitive research rather than buying intent — not a sales call; a human can route it to partnerships if desired.",
+    "briefing": [
+      "Company: Apex Digital Partners — corporate email (apexdigitalpartners.com), website apexdigitalpartners.com, submitted via contact_form.",
+      "Stated budget: $30,000/mo (Observed — from the form field).",
+      "Estimated company revenue: $2,880,000-$7,200,000/yr (Assumed — $30,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing).",
+      "Single Grain fit: outside ICP today — no sales follow-up recommended.",
+      "Risk flags: competitor_fishing."
+    ],
+    "revenue_estimate": {
+      "low_usd": 2880000,
+      "high_usd": 7200000,
+      "label": "Assumed",
+      "basis": "$30,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
+    },
+    "escalation_route": null,
+    "review_recommendation": "Not Approved"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "lead_id": "L-016",
+  "source": "contact_form",
+  "submitted_at": "2026-06-06T09:08:00Z",
+  "submitted_at_valid": true,
+  "name": "Chris Doyle",
+  "email": "chris@doylehvac.com",
+  "email_class": "corporate",
+  "email_domain": "doylehvac.com",
+  "company": "Doyle HVAC",
+  "website": "https://doylehvac.com",
+  "website_host": "doylehvac.com",
+  "website_scheme": "https",
+  "monthly_budget_usd": 6000,
+  "budget_raw": "6000",
+  "budget_flag": "ok",
+  "message": "Hi there 👋👋 we do HVAC in the Phoenix metro & want more service calls!! Saw ur podcast 🔥🔥",
+  "urls": [],
+  "flags": [],
+  "sanitization": {
+    "entities_decoded": 1,
+    "tags_stripped": 2,
+    "invisible_removed": 0,
+    "bidi_removed": 0,
+    "control_removed": 0
+  },
+  "forensics": {
+    "raw": {
+      "lead_id": "L-016",
+      "submitted_at": "2026-06-06T09:08:00Z",
+      "name": "Chris Doyle",
+      "email": "chris@doylehvac.com",
+      "company": "Doyle HVAC",
+      "website": "https://doylehvac.com",
+      "monthly_budget_usd": "6000",
+      "message": "<div>Hi there 👋👋 we do HVAC in the Phoenix metro &amp; want more service calls!! Saw ur podcast 🔥🔥</div>",
+      "source": "contact_form"
+    }
+  },
+  "message_language": "en",
+  "intent": "commercial",
+  "intent_score": 1,
+  "growth_signal": false,
+  "verdict": {
+    "lead_id": "L-016",
+    "company": "Doyle HVAC",
+    "name": "Chris Doyle",
+    "email": "chris@doylehvac.com",
+    "email_class": "corporate",
+    "website_host": "doylehvac.com",
+    "budget_display": "$6,000/mo",
+    "budget_flag": "ok",
+    "source": "contact_form",
+    "submitted_at": "2026-06-06T09:08:00Z",
+    "submitted_at_valid": true,
+    "message": "Hi there 👋👋 we do HVAC in the Phoenix metro & want more service calls!! Saw ur podcast 🔥🔥",
+    "message_language": "en",
+    "urls": [],
+    "flags": [],
+    "sanitization": {
+      "entities_decoded": 1,
+      "tags_stripped": 2,
+      "invisible_removed": 0,
+      "bidi_removed": 0,
+      "control_removed": 0
+    },
+    "intent": "commercial",
+    "thread_parent": null,
+    "decision": "QUALIFY",
+    "confidence": 0.7,
+    "reason": "Stated budget $6,000/mo in the entry-retainer range with a clear ask — worth a discovery call.",
+    "briefing": [
+      "Company: Doyle HVAC — corporate email (doylehvac.com), website doylehvac.com, submitted via contact_form.",
+      "Stated budget: $6,000/mo (Observed — from the form field).",
+      "Estimated company revenue: $576,000-$1,440,000/yr (Assumed — $6,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing).",
+      "Single Grain fit: inside ICP — budget and intent support a sales conversation.",
+      "Risk flags: none."
+    ],
+    "revenue_estimate": {
+      "low_usd": 576000,
+      "high_usd": 1440000,
+      "label": "Assumed",
+      "basis": "$6,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
+    },
+    "escalation_route": null,
+    "review_recommendation": "Approved"
+  }
+}

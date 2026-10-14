@@ -1,0 +1,94 @@
+{
+  "lead_id": "L-002",
+  "source": "contact_form",
+  "submitted_at": "2026-06-01T11:02:00Z",
+  "submitted_at_valid": true,
+  "name": "Marcus Lee",
+  "email": "marcus.lee.2027@stateuniv.edu",
+  "email_class": "corporate",
+  "email_domain": "stateuniv.edu",
+  "company": "",
+  "website": "",
+  "website_host": null,
+  "website_scheme": null,
+  "monthly_budget_usd": 0,
+  "budget_raw": "0",
+  "budget_flag": "ok",
+  "message": "Hi! I'm a junior studying marketing and I'd love advice on breaking into the industry. Could someone hop on a call to mentor me?",
+  "urls": [],
+  "flags": [
+    "missing_field:company",
+    "missing_field:website"
+  ],
+  "sanitization": {
+    "entities_decoded": 0,
+    "tags_stripped": 0,
+    "invisible_removed": 0,
+    "bidi_removed": 0,
+    "control_removed": 0
+  },
+  "forensics": {
+    "raw": {
+      "lead_id": "L-002",
+      "submitted_at": "2026-06-01T11:02:00Z",
+      "name": "Marcus Lee",
+      "email": "marcus.lee.2027@stateuniv.edu",
+      "company": "",
+      "website": "",
+      "monthly_budget_usd": "0",
+      "message": "Hi! I'm a junior studying marketing and I'd love advice on breaking into the industry. Could someone hop on a call to mentor me?",
+      "source": "contact_form"
+    }
+  },
+  "message_language": "en",
+  "intent": "career",
+  "intent_score": 4,
+  "growth_signal": false,
+  "verdict": {
+    "lead_id": "L-002",
+    "company": "(not given)",
+    "name": "Marcus Lee",
+    "email": "marcus.lee.2027@stateuniv.edu",
+    "email_class": "corporate",
+    "website_host": null,
+    "budget_display": "$0/mo",
+    "budget_flag": "ok",
+    "source": "contact_form",
+    "submitted_at": "2026-06-01T11:02:00Z",
+    "submitted_at_valid": true,
+    "message": "Hi! I'm a junior studying marketing and I'd love advice on breaking into the industry. Could someone hop on a call to mentor me?",
+    "message_language": "en",
+    "urls": [],
+    "flags": [
+      "missing_field:company",
+      "missing_field:website"
+    ],
+    "sanitization": {
+      "entities_decoded": 0,
+      "tags_stripped": 0,
+      "invisible_removed": 0,
+      "bidi_removed": 0,
+      "control_removed": 0
+    },
+    "intent": "career",
+    "thread_parent": null,
+    "decision": "REJECT",
+    "confidence": 0.9,
+    "reason": "No commercial intent — this is a career/mentorship request, not a lead.",
+    "briefing": [
+      "Company: (company not given) — corporate email (stateuniv.edu), website not provided, submitted via contact_form.",
+      "Stated budget: $0/mo (Observed — from the form field).",
+      "Estimated company revenue: not estimable (insufficient data (no size signal and no usable budget)).",
+      "Single Grain fit: outside ICP today — no sales follow-up recommended.",
+      "Risk flags: none."
+    ],
+    "revenue_estimate": {
+      "low_usd": null,
+      "high_usd": null,
+      "label": "Not estimable",
+      "basis": "insufficient data (no size signal and no usable budget)"
+    },
+    "escalation_route": null,
+    "review_recommendation": "Not Approved"
+  }
+}
