@@ -77,6 +77,7 @@
     "thread_parent": "L-002",
     "decision": "NURTURE",
     "confidence": 0.7,
+    "review_recommendation": "Not Approved (nurture)",
     "reason": "Thread follow-up from the same contact as L-002: stated budget $2,500/mo is below typical retainers but the intent is real (4 locations broaden the engagement scope) — nurture and revisit.",
     "briefing": [
       "Company: (company not given) — corporate email (stateuniv.edu), website not provided, submitted via contact_form.",
@@ -91,7 +92,6 @@
       "label": "Assumed",
       "basis": "$2,500/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Not Approved (nurture)"
+    "escalation_route": null
   }
 }

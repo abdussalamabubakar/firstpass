@@ -41,6 +41,8 @@
   .flag.hot { background: #fdecea; border-color: #f4c7c3; color: var(--bad); }
   .route { font-size: 13px; color: var(--esc); font-weight: 600; margin-bottom: 8px; }
   .decide { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .ai-recommend { font-size: 12.5px; color: var(--muted); margin-bottom: 8px; }
+  .ai-recommend b { color: var(--ink); }
   .decide button { border: 1px solid var(--line); background: #fff; border-radius: 8px;
                    padding: 7px 14px; font-size: 13px; cursor: pointer; font-weight: 600; }
   .decide button:hover { border-color: var(--accent); color: var(--accent); }
@@ -91,8 +93,9 @@
       </div>
       {% endif %}
       {% if card.lead_id in existing %}
-        <span class="finalized">Finalized by reviewer: {{ existing[card.lead_id].human_choice }} → {{ existing[card.lead_id].final_decision }}</span>
+        <span class="finalized">Final say: {{ existing[card.lead_id].human_choice }} → {{ existing[card.lead_id].final_decision }} (AI had said: {{ existing[card.lead_id].agent_decision }})</span>
       {% else %}
+      <div class="ai-recommend">AI verdict: <b>{{ card.review_recommendation }}</b> — your click is the final say, and it can override the AI.</div>
       <div class="decide" data-lead="{{ card.lead_id }}">
         <button data-choice="approved">Approved</button>
         <button data-choice="not_approved">Not Approved</button>

@@ -74,6 +74,7 @@
     "thread_parent": null,
     "decision": "REJECT",
     "confidence": 0.9,
+    "review_recommendation": "Not Approved",
     "reason": "No commercial intent — this is a career/mentorship request, not a lead.",
     "briefing": [
       "Company: (company not given) — corporate email (stateuniv.edu), website not provided, submitted via contact_form.",
@@ -88,7 +89,6 @@
       "label": "Not estimable",
       "basis": "insufficient data (no size signal and no usable budget)"
     },
-    "escalation_route": null,
-    "review_recommendation": "Not Approved"
+    "escalation_route": null
   }
 }

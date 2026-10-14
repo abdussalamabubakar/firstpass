@@ -76,6 +76,7 @@
     "thread_parent": null,
     "decision": "ESCALATE",
     "confidence": 0.95,
+    "review_recommendation": "Not Enough",
     "reason": "Legal/data-protection request (possible GDPR erasure), not a sales lead — route to privacy/compliance and pause all marketing processing for this contact.",
     "briefing": [
       "Company: (company not given) — corporate email (example.de), website not provided, submitted via contact_form.",
@@ -90,7 +91,6 @@
       "label": "Not estimable",
       "basis": "insufficient data (no size signal and no usable budget)"
     },
-    "escalation_route": "privacy_compliance",
-    "review_recommendation": "Not Enough"
+    "escalation_route": "privacy_compliance"
   }
 }

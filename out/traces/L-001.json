@@ -68,6 +68,7 @@
     "thread_parent": null,
     "decision": "QUALIFY",
     "confidence": 0.9,
+    "review_recommendation": "Approved",
     "reason": "Strong commercial intent with stated budget $25,000/mo, inside the typical retainer range for an agency of this profile.",
     "briefing": [
       "Company: BrightCart — corporate email (brightcart.io), website brightcart.io, submitted via contact_form.",
@@ -82,7 +83,6 @@
       "label": "Assumed",
       "basis": "$25,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Approved"
+    "escalation_route": null
   }
 }

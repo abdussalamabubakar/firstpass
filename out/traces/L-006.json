@@ -72,6 +72,7 @@
     "thread_parent": null,
     "decision": "REJECT",
     "confidence": 0.5,
+    "review_recommendation": "Not Approved",
     "reason": "Stated budget $500/mo is below the service floor and the message carried a manipulation attempt, so its claims (unlimited budget, pre-approved contract) were discarded as unverified.",
     "briefing": [
       "Company: Pinnacle Growth — corporate email (pinnaclegrowth.co), website pinnaclegrowth.co, submitted via contact_form.",
@@ -86,7 +87,6 @@
       "label": "Not estimable",
       "basis": "insufficient data (no size signal and no usable budget)"
     },
-    "escalation_route": null,
-    "review_recommendation": "Not Approved"
+    "escalation_route": null
   }
 }

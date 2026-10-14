@@ -72,6 +72,7 @@
     "thread_parent": null,
     "decision": "QUALIFY",
     "confidence": 0.6,
+    "review_recommendation": "Approved",
     "reason": "No message content was submitted — this decision rests only on the verifiable form fields (stated budget $22,000/mo, corporate email, website provided); confirm the actual needs on first contact.",
     "briefing": [
       "Company: Quorum Data — corporate email (quorumdata.ai), website quorumdata.ai, submitted via contact_form.",
@@ -86,7 +87,6 @@
       "label": "Assumed",
       "basis": "$22,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Approved"
+    "escalation_route": null
   }
 }

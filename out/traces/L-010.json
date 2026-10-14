@@ -76,6 +76,7 @@
     "thread_parent": null,
     "decision": "REJECT",
     "confidence": 0.8,
+    "review_recommendation": "Not Approved",
     "reason": "Submission matches junk heuristics (placeholder identity, low-signal message, implausible budget) — no sales follow-up.",
     "briefing": [
       "Company: asdf — corporate email (asdf.com), website not provided, submitted via contact_form.",
@@ -90,7 +91,6 @@
       "label": "Assumed",
       "basis": "$999,999/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Not Approved"
+    "escalation_route": null
   }
 }

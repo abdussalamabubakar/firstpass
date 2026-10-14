@@ -72,6 +72,7 @@
     "thread_parent": null,
     "decision": "NURTURE",
     "confidence": 0.7,
+    "review_recommendation": "Not Approved (nurture)",
     "reason": "Real commercial interest but budget unspecified — needs a discovery/education call before qualification.",
     "briefing": [
       "Company: Okafor Logistics — corporate email (okaforlogistics.com), website okaforlogistics.com, submitted via contact_form.",
@@ -86,7 +87,6 @@
       "label": "Not estimable",
       "basis": "insufficient data (no size signal and no usable budget)"
     },
-    "escalation_route": null,
-    "review_recommendation": "Not Approved (nurture)"
+    "escalation_route": null
   }
 }

@@ -72,6 +72,7 @@
     "thread_parent": null,
     "decision": "QUALIFY",
     "confidence": 0.65,
+    "review_recommendation": "Approved",
     "reason": "Stated budget $9,000/mo in the entry-retainer range with a clear ask — worth a discovery call.",
     "briefing": [
       "Company: FinLit — corporate email (finlitapp.com), website finlitapp.com, submitted via contact_form.",
@@ -86,7 +87,6 @@
       "label": "Assumed",
       "basis": "$9,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Approved"
+    "escalation_route": null
   }
 }

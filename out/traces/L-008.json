@@ -76,6 +76,7 @@
     "thread_parent": null,
     "decision": "ESCALATE",
     "confidence": 0.8,
+    "review_recommendation": "Not Enough",
     "reason": "High stated budget but unverifiable identity (free-mail address, no company/website) — verify who this is before committing sales time.",
     "briefing": [
       "Company: (company not given) — free email (gmail.com), website not provided, submitted via contact_form.",
@@ -90,7 +91,6 @@
       "label": "Assumed",
       "basis": "1,000 employees (stated in message) x assumed $150k-$300k revenue/employee"
     },
-    "escalation_route": "identity_verification",
-    "review_recommendation": "Not Enough"
+    "escalation_route": "identity_verification"
   }
 }

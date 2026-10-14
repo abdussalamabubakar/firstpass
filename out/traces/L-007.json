@@ -72,6 +72,7 @@
     "thread_parent": null,
     "decision": "ESCALATE",
     "confidence": 0.8,
+    "review_recommendation": "Not Enough",
     "reason": "Conflicting signals (stated budget contradicts company profile) — a human should verify the data before any sales decision.",
     "briefing": [
       "Company: Continental Foods Group — corporate email (continentalfoods.com), website continentalfoods.com, submitted via referral.",
@@ -86,7 +87,6 @@
       "label": "Assumed",
       "basis": "12,000 employees (stated in message) x assumed $150k-$300k revenue/employee"
     },
-    "escalation_route": "signal_verification",
-    "review_recommendation": "Not Enough"
+    "escalation_route": "signal_verification"
   }
 }

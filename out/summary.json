@@ -1,7 +1,7 @@
 {
   "input_file": "fixtures\\inbound_leads.csv",
   "input_sha256": "cc1927ca771c37b186a2abdb7b9757594da79ec6dda074e5a514dd2761cc8599",
-  "generated_at": "2026-10-14T22:18:32+00:00",
+  "generated_at": "2026-10-14T22:33:22+00:00",
   "llm_used": false,
   "llm_error": null,
   "total_leads": 20,
@@ -93,7 +93,7 @@
       ]
     }
   ],
-  "elapsed_ms": 13.2,
+  "elapsed_ms": 13.3,
   "ms_per_lead": 0.66,
-  "verdict_ms_per_lead": 0.04
+  "verdict_ms_per_lead": 0.05
 }

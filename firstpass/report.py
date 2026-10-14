@@ -49,6 +49,7 @@ def build_card(rec: dict, verdict: dict) -> dict:
         "thread_parent": rec.get("thread_parent"),
         "decision": verdict["decision"],
         "confidence": verdict["confidence"],
+        "review_recommendation": verdict["review_recommendation"],
         "reason": verdict["reason"],
         "briefing": verdict["briefing"],
         "revenue_estimate": verdict["revenue_estimate"],

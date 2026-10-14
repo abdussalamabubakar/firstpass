@@ -61,6 +61,21 @@ def test_not_enough_maps_to_escalate(ui):
     assert resp.get_json()["final_decision"] == "ESCALATE"
 
 
+def test_human_click_overrides_agent_verdict(ui):
+    """The AI gives the verdict; the human's click is the final say —
+    including overriding it. L-002: AI says REJECT, human approves."""
+    client, out_dir = ui
+    resp = client.post("/api/decide/L-002",
+                       json={"choice": "approved", "note": "I disagree — call them"})
+    assert resp.get_json()["final_decision"] == "QUALIFY"  # human overrides
+
+    import csv
+    with open(Path(out_dir) / "final_decisions.csv", newline="", encoding="utf-8") as fh:
+        row = list(csv.DictReader(fh))[-1]
+    assert row["agent_decision"] == "REJECT"    # AI verdict still recorded
+    assert row["final_decision"] == "QUALIFY"   # but the human's say is final
+
+
 def test_invalid_choice_rejected(ui):
     client, _ = ui
     resp = client.post("/api/decide/L-001", json={"choice": "qualify please"})

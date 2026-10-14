@@ -76,6 +76,7 @@
     "thread_parent": null,
     "decision": "REJECT",
     "confidence": 0.75,
+    "review_recommendation": "Not Approved",
     "reason": "Message reads as peer-agency/competitive research rather than buying intent and the email is disposable — not a sales call; a human can route it to partnerships if desired.",
     "briefing": [
       "Company: Blake Consulting — disposable email (mailinator.com), website not provided, submitted via contact_form.",
@@ -90,7 +91,6 @@
       "label": "Assumed",
       "basis": "$20,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Not Approved"
+    "escalation_route": null
   }
 }

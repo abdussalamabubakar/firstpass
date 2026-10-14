@@ -68,6 +68,7 @@
     "thread_parent": null,
     "decision": "NURTURE",
     "confidence": 0.75,
+    "review_recommendation": "Not Approved (nurture)",
     "reason": "Stated budget $3,000/mo is below typical retainers but the intent is real (clear growth signal suggests budget will grow) — nurture and revisit.",
     "briefing": [
       "Company: Seedling — corporate email (seedlingapp.com), website seedlingapp.com, submitted via podcast.",
@@ -82,7 +83,6 @@
       "label": "Assumed",
       "basis": "$3,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Not Approved (nurture)"
+    "escalation_route": null
   }
 }

@@ -33,8 +33,10 @@ TRACES_DIR = OUT_DIR / "traces"
 FINAL_CSV = OUT_DIR / "final_decisions.csv"
 
 CHOICES = {
-    # human button -> final decision it produces
-    "approved": None,        # agent's verdict stands
+    # The reviewer's click IS the final say — it can confirm the AI's
+    # verdict or override it. The AI's verdict stays recorded alongside
+    # so the packet can show agreement vs. override.
+    "approved": "QUALIFY",
     "not_approved": "REJECT",
     "not_enough": "ESCALATE",  # reviewer needs more info — route to verification
 }
@@ -108,7 +110,7 @@ def decide(lead_id: str):
     if card is None:
         return jsonify(error=f"unknown lead {lead_id}"), 404
 
-    final_decision = CHOICES[choice] or card["decision"]
+    final_decision = CHOICES[choice]
     append_final({
         "lead_id": lead_id,
         "agent_decision": card["decision"],

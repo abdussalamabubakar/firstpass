@@ -26,6 +26,7 @@
     "thread_parent": null,
     "decision": "QUALIFY",
     "confidence": 0.9,
+    "review_recommendation": "Approved",
     "reason": "Strong commercial intent with stated budget $25,000/mo, inside the typical retainer range for an agency of this profile.",
     "briefing": [
       "Company: BrightCart — corporate email (brightcart.io), website brightcart.io, submitted via contact_form.",
@@ -40,8 +41,7 @@
       "label": "Assumed",
       "basis": "$25,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Approved"
+    "escalation_route": null
   },
   {
     "lead_id": "L-002",
@@ -73,6 +73,7 @@
     "thread_parent": null,
     "decision": "REJECT",
     "confidence": 0.9,
+    "review_recommendation": "Not Approved",
     "reason": "No commercial intent — this is a career/mentorship request, not a lead.",
     "briefing": [
       "Company: (company not given) — corporate email (stateuniv.edu), website not provided, submitted via contact_form.",
@@ -87,8 +88,7 @@
       "label": "Not estimable",
       "basis": "insufficient data (no size signal and no usable budget)"
     },
-    "escalation_route": null,
-    "review_recommendation": "Not Approved"
+    "escalation_route": null
   },
   {
     "lead_id": "L-003",
@@ -119,6 +119,7 @@
     "thread_parent": "L-001",
     "decision": "QUALIFY",
     "confidence": 0.85,
+    "review_recommendation": "Approved",
     "reason": "Thread follow-up from the same contact as L-001: strong commercial intent with stated budget $25,000/mo, inside the typical retainer range for an agency of this profile.",
     "briefing": [
       "Company: Bright Cart Inc — corporate email (brightcart.io), website brightcart.io, submitted via contact_form.",
@@ -133,8 +134,7 @@
       "label": "Assumed",
       "basis": "$25,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Approved"
+    "escalation_route": null
   },
   {
     "lead_id": "L-004",
@@ -165,6 +165,7 @@
     "thread_parent": null,
     "decision": "QUALIFY",
     "confidence": 0.75,
+    "review_recommendation": "Approved",
     "reason": "Strong commercial intent with stated budget $12,000/mo, inside the typical retainer range for an agency of this profile.",
     "briefing": [
       "Company: Verdant Labs — missing email, website verdantlabs.com, submitted via webinar.",
@@ -179,8 +180,7 @@
       "label": "Assumed",
       "basis": "$12,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Approved"
+    "escalation_route": null
   },
   {
     "lead_id": "L-005",
@@ -211,6 +211,7 @@
     "thread_parent": null,
     "decision": "NURTURE",
     "confidence": 0.7,
+    "review_recommendation": "Not Approved (nurture)",
     "reason": "Real commercial interest but budget unspecified — needs a discovery/education call before qualification.",
     "briefing": [
       "Company: Okafor Logistics — corporate email (okaforlogistics.com), website okaforlogistics.com, submitted via contact_form.",
@@ -225,8 +226,7 @@
       "label": "Not estimable",
       "basis": "insufficient data (no size signal and no usable budget)"
     },
-    "escalation_route": null,
-    "review_recommendation": "Not Approved (nurture)"
+    "escalation_route": null
   },
   {
     "lead_id": "L-006",
@@ -257,6 +257,7 @@
     "thread_parent": null,
     "decision": "REJECT",
     "confidence": 0.5,
+    "review_recommendation": "Not Approved",
     "reason": "Stated budget $500/mo is below the service floor and the message carried a manipulation attempt, so its claims (unlimited budget, pre-approved contract) were discarded as unverified.",
     "briefing": [
       "Company: Pinnacle Growth — corporate email (pinnaclegrowth.co), website pinnaclegrowth.co, submitted via contact_form.",
@@ -271,8 +272,7 @@
       "label": "Not estimable",
       "basis": "insufficient data (no size signal and no usable budget)"
     },
-    "escalation_route": null,
-    "review_recommendation": "Not Approved"
+    "escalation_route": null
   },
   {
     "lead_id": "L-007",
@@ -303,6 +303,7 @@
     "thread_parent": null,
     "decision": "ESCALATE",
     "confidence": 0.8,
+    "review_recommendation": "Not Enough",
     "reason": "Conflicting signals (stated budget contradicts company profile) — a human should verify the data before any sales decision.",
     "briefing": [
       "Company: Continental Foods Group — corporate email (continentalfoods.com), website continentalfoods.com, submitted via referral.",
@@ -317,8 +318,7 @@
       "label": "Assumed",
       "basis": "12,000 employees (stated in message) x assumed $150k-$300k revenue/employee"
     },
-    "escalation_route": "signal_verification",
-    "review_recommendation": "Not Enough"
+    "escalation_route": "signal_verification"
   },
   {
     "lead_id": "L-008",
@@ -351,6 +351,7 @@
     "thread_parent": null,
     "decision": "ESCALATE",
     "confidence": 0.8,
+    "review_recommendation": "Not Enough",
     "reason": "High stated budget but unverifiable identity (free-mail address, no company/website) — verify who this is before committing sales time.",
     "briefing": [
       "Company: (company not given) — free email (gmail.com), website not provided, submitted via contact_form.",
@@ -365,8 +366,7 @@
       "label": "Assumed",
       "basis": "1,000 employees (stated in message) x assumed $150k-$300k revenue/employee"
     },
-    "escalation_route": "identity_verification",
-    "review_recommendation": "Not Enough"
+    "escalation_route": "identity_verification"
   },
   {
     "lead_id": "L-009",
@@ -395,6 +395,7 @@
     "thread_parent": null,
     "decision": "QUALIFY",
     "confidence": 0.85,
+    "review_recommendation": "Approved",
     "reason": "Strong commercial intent with stated budget $18,000/mo, inside the typical retainer range for an agency of this profile.",
     "briefing": [
       "Company: Tienda Verde — corporate email (tiendaverde.mx), website tiendaverde.mx, submitted via contact_form.",
@@ -409,8 +410,7 @@
       "label": "Assumed",
       "basis": "$18,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Approved"
+    "escalation_route": null
   },
   {
     "lead_id": "L-010",
@@ -443,6 +443,7 @@
     "thread_parent": null,
     "decision": "REJECT",
     "confidence": 0.8,
+    "review_recommendation": "Not Approved",
     "reason": "Submission matches junk heuristics (placeholder identity, low-signal message, implausible budget) — no sales follow-up.",
     "briefing": [
       "Company: asdf — corporate email (asdf.com), website not provided, submitted via contact_form.",
@@ -457,8 +458,7 @@
       "label": "Assumed",
       "basis": "$999,999/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Not Approved"
+    "escalation_route": null
   },
   {
     "lead_id": "L-011",
@@ -489,6 +489,7 @@
     "thread_parent": null,
     "decision": "REJECT",
     "confidence": 0.65,
+    "review_recommendation": "Not Approved",
     "reason": "Message reads as peer-agency/competitive research rather than buying intent — not a sales call; a human can route it to partnerships if desired.",
     "briefing": [
       "Company: Apex Digital Partners — corporate email (apexdigitalpartners.com), website apexdigitalpartners.com, submitted via contact_form.",
@@ -503,8 +504,7 @@
       "label": "Assumed",
       "basis": "$30,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Not Approved"
+    "escalation_route": null
   },
   {
     "lead_id": "L-012",
@@ -535,6 +535,7 @@
     "thread_parent": null,
     "decision": "QUALIFY",
     "confidence": 0.65,
+    "review_recommendation": "Approved",
     "reason": "Stated budget $9,000/mo in the entry-retainer range with a clear ask — worth a discovery call.",
     "briefing": [
       "Company: FinLit — corporate email (finlitapp.com), website finlitapp.com, submitted via contact_form.",
@@ -549,8 +550,7 @@
       "label": "Assumed",
       "basis": "$9,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Approved"
+    "escalation_route": null
   },
   {
     "lead_id": "L-013",
@@ -583,6 +583,7 @@
     "thread_parent": null,
     "decision": "REJECT",
     "confidence": 0.75,
+    "review_recommendation": "Not Approved",
     "reason": "Message reads as peer-agency/competitive research rather than buying intent and the email is disposable — not a sales call; a human can route it to partnerships if desired.",
     "briefing": [
       "Company: Blake Consulting — disposable email (mailinator.com), website not provided, submitted via contact_form.",
@@ -597,8 +598,7 @@
       "label": "Assumed",
       "basis": "$20,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Not Approved"
+    "escalation_route": null
   },
   {
     "lead_id": "L-014",
@@ -627,6 +627,7 @@
     "thread_parent": null,
     "decision": "NURTURE",
     "confidence": 0.75,
+    "review_recommendation": "Not Approved (nurture)",
     "reason": "Stated budget $3,000/mo is below typical retainers but the intent is real (clear growth signal suggests budget will grow) — nurture and revisit.",
     "briefing": [
       "Company: Seedling — corporate email (seedlingapp.com), website seedlingapp.com, submitted via podcast.",
@@ -641,8 +642,7 @@
       "label": "Assumed",
       "basis": "$3,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Not Approved (nurture)"
+    "escalation_route": null
   },
   {
     "lead_id": "L-015",
@@ -675,6 +675,7 @@
     "thread_parent": "L-002",
     "decision": "NURTURE",
     "confidence": 0.7,
+    "review_recommendation": "Not Approved (nurture)",
     "reason": "Thread follow-up from the same contact as L-002: stated budget $2,500/mo is below typical retainers but the intent is real (4 locations broaden the engagement scope) — nurture and revisit.",
     "briefing": [
       "Company: (company not given) — corporate email (stateuniv.edu), website not provided, submitted via contact_form.",
@@ -689,8 +690,7 @@
       "label": "Assumed",
       "basis": "$2,500/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Not Approved (nurture)"
+    "escalation_route": null
   },
   {
     "lead_id": "L-016",
@@ -719,6 +719,7 @@
     "thread_parent": null,
     "decision": "QUALIFY",
     "confidence": 0.7,
+    "review_recommendation": "Approved",
     "reason": "Stated budget $6,000/mo in the entry-retainer range with a clear ask — worth a discovery call.",
     "briefing": [
       "Company: Doyle HVAC — corporate email (doylehvac.com), website doylehvac.com, submitted via contact_form.",
@@ -733,8 +734,7 @@
       "label": "Assumed",
       "basis": "$6,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Approved"
+    "escalation_route": null
   },
   {
     "lead_id": "L-017",
@@ -763,6 +763,7 @@
     "thread_parent": null,
     "decision": "QUALIFY",
     "confidence": 0.85,
+    "review_recommendation": "Approved",
     "reason": "Strong commercial intent with stated budget $15,000/mo, inside the typical retainer range for an agency of this profile.",
     "briefing": [
       "Company: NorthPeak Health — corporate email (northpeakhealth.com), website northpeakhealth.com, submitted via referral.",
@@ -777,8 +778,7 @@
       "label": "Assumed",
       "basis": "$15,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Approved"
+    "escalation_route": null
   },
   {
     "lead_id": "L-018",
@@ -809,6 +809,7 @@
     "thread_parent": null,
     "decision": "QUALIFY",
     "confidence": 0.6,
+    "review_recommendation": "Approved",
     "reason": "No message content was submitted — this decision rests only on the verifiable form fields (stated budget $22,000/mo, corporate email, website provided); confirm the actual needs on first contact.",
     "briefing": [
       "Company: Quorum Data — corporate email (quorumdata.ai), website quorumdata.ai, submitted via contact_form.",
@@ -823,8 +824,7 @@
       "label": "Assumed",
       "basis": "$22,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Approved"
+    "escalation_route": null
   },
   {
     "lead_id": "L-019",
@@ -857,6 +857,7 @@
     "thread_parent": null,
     "decision": "ESCALATE",
     "confidence": 0.95,
+    "review_recommendation": "Not Enough",
     "reason": "Legal/data-protection request (possible GDPR erasure), not a sales lead — route to privacy/compliance and pause all marketing processing for this contact.",
     "briefing": [
       "Company: (company not given) — corporate email (example.de), website not provided, submitted via contact_form.",
@@ -871,8 +872,7 @@
       "label": "Not estimable",
       "basis": "insufficient data (no size signal and no usable budget)"
     },
-    "escalation_route": "privacy_compliance",
-    "review_recommendation": "Not Enough"
+    "escalation_route": "privacy_compliance"
   },
   {
     "lead_id": "L-020",
@@ -915,6 +915,7 @@
     "thread_parent": null,
     "decision": "ESCALATE",
     "confidence": 0.95,
+    "review_recommendation": "Not Enough",
     "reason": "Suspected phishing/malware delivery in the submission — route to security; do not reply, click, download, or enrich this row.",
     "briefing": [
       "Company: FastPay Billing — corporate email (fastpay-billing.net), website fastpay-billing.net, submitted via contact_form.",
@@ -929,7 +930,6 @@
       "label": "Assumed",
       "basis": "$10,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": "security",
-    "review_recommendation": "Not Enough"
+    "escalation_route": "security"
   }
 ]

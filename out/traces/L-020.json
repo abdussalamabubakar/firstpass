@@ -96,6 +96,7 @@
     "thread_parent": null,
     "decision": "ESCALATE",
     "confidence": 0.95,
+    "review_recommendation": "Not Enough",
     "reason": "Suspected phishing/malware delivery in the submission — route to security; do not reply, click, download, or enrich this row.",
     "briefing": [
       "Company: FastPay Billing — corporate email (fastpay-billing.net), website fastpay-billing.net, submitted via contact_form.",
@@ -110,7 +111,6 @@
       "label": "Assumed",
       "basis": "$10,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": "security",
-    "review_recommendation": "Not Enough"
+    "escalation_route": "security"
   }
 }

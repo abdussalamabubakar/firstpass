@@ -68,6 +68,7 @@
     "thread_parent": null,
     "decision": "QUALIFY",
     "confidence": 0.7,
+    "review_recommendation": "Approved",
     "reason": "Stated budget $6,000/mo in the entry-retainer range with a clear ask — worth a discovery call.",
     "briefing": [
       "Company: Doyle HVAC — corporate email (doylehvac.com), website doylehvac.com, submitted via contact_form.",
@@ -82,7 +83,6 @@
       "label": "Assumed",
       "basis": "$6,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Approved"
+    "escalation_route": null
   }
 }

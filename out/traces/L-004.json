@@ -72,6 +72,7 @@
     "thread_parent": null,
     "decision": "QUALIFY",
     "confidence": 0.75,
+    "review_recommendation": "Approved",
     "reason": "Strong commercial intent with stated budget $12,000/mo, inside the typical retainer range for an agency of this profile.",
     "briefing": [
       "Company: Verdant Labs — missing email, website verdantlabs.com, submitted via webinar.",
@@ -86,7 +87,6 @@
       "label": "Assumed",
       "basis": "$12,000/mo stated agency budget x assumed 5-12% of revenue spent on marketing"
     },
-    "escalation_route": null,
-    "review_recommendation": "Approved"
+    "escalation_route": null
   }
 }
