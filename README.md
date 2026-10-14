@@ -22,30 +22,30 @@ Requires Python 3.10+. No compilation, no database, no external services.
 ```bash
 pip install -r requirements.txt     # Flask + pytest only
 
-python run_agent.py                 # run the triage pipeline on the fixture
-python review.py                    # open http://127.0.0.1:5057 → review cards
+python review.py                    # opens http://127.0.0.1:5057
 ```
 
-The run processes every row of `fixtures/inbound_leads.csv`, writes its
-evidence to `out/`, and the review UI shows one card per lead: bullet
-briefing, the agent's recommended verdict, confidence, and risk flags. The
-reviewer clicks **Approved / Not Approved / Not Enough** to finalize; every
-click is persisted to `out/final_decisions.csv`.
+You land on the **upload page**: add a dataset (any CSV in the fixture
+schema — the "already-scraped" data), or one-click the bundled demo fixture.
+Every upload becomes a **run**: the pipeline sanitizes, detects traps, and
+produces verdicts (via OpenRouter when `LLM_API_KEY` is set, transparent
+deterministic engine otherwise), then opens that run's review queue. Past
+runs sit in the history sidebar on the left. On each card, your click on
+**Approved / Not Approved / Not Enough** is the final say — it can confirm
+or override the AI, and both verdicts are persisted to the run's
+`final_decisions.csv`.
 
-![Review UI — sales queue](docs/screenshots/review-ui-sales-queue.png)
-![Review UI — escalation queue](docs/screenshots/review-ui-escalation-queue.png)
-![Review UI — a finalized decision](docs/screenshots/review-ui-decision-finalized.png)
-
-Run it on your own leads: any CSV with the fixture schema works.
+Prefer the terminal? The CLI does the same processing without the UI:
 
 ```bash
-python run_agent.py --input path/to/your_leads.csv --out out
+python run_agent.py                              # demo defaults
+python run_agent.py --input path/to/your.csv --out out
 ```
 
 Tests (the full trap regression net):
 
 ```bash
-python -m pytest tests/ -q          # 47 tests
+python -m pytest tests/ -q          # 53 tests
 ```
 
 ## What the agent does, step by step
@@ -142,8 +142,8 @@ deterministically and says so in the summary — no silent gaps.
 ## Repo layout
 
 ```
-run_agent.py            CLI — run the pipeline
-review.py               Flask card review UI (localhost:5057)
+run_agent.py            CLI — run the pipeline (scripted path)
+review.py               web app — upload page + run history + review queues
 firstpass/
   sanitize.py           security boundary: deobfuscation + normalization
   signals.py            trap detectors (run on sanitized text only)
@@ -152,13 +152,15 @@ firstpass/
   pipeline.py           orchestration
   report.py             output writers
 prompts/system_prompt.md  the baked-in prompt (output contract + trust rules)
-templates/index.html    review UI (all lead content autoescaped)
-tests/                  47 tests incl. the full-fixture trap net
+templates/upload.html   landing page: dataset upload + run history
+templates/review.html   per-run card review queue (all lead content autoescaped)
+tests/                  53 tests incl. the full-fixture trap net
 fixtures/               pinned challenge fixture
 out/                    committed demo run: decisions.csv, sanitized_leads.json,
                         cards.json, traces/, summary.json, run.log
+out/runs/<id>/          every upload/demo becomes its own run directory
 docs/                   trap-map, failure-notes, evidence-log, ai-disclosure,
-                        submission drafts
+                        submission drafts, screenshots
 ```
 
 ## What stays human (on purpose)
