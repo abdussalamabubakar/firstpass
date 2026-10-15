@@ -22,6 +22,12 @@ Benchmarked / Assumed**). Unlabeled numbers are how trust dies; we label ours.
 | 14 | Revenue estimates (e.g., "$240,000–$600,000/yr" for L-001) | 2 | **Assumed** — transparent multipliers (stated budget × 12 × 8–20x revenue multiple); labeled in every briefing bullet that carries them | `out/cards.json` `revenue_estimate.basis` |
 | 15 | A human decision loop (Approved / Not Approved / Not Enough) finalizes every verdict; the agent's output is a recommendation only | 2–3 (UI code + persisted CSV) | Observed (mechanism) | `review.py`, `tests/test_review.py`, `out/final_decisions.csv` after a review session |
 | 16 | The LLM path (OpenRouter-compatible) works as described | 2 (code + prompt artifact inspectable; not exercised in the committed run — no key available) | Observed for code structure; **Assumed** for live provider behavior | `firstpass/llm.py`, `prompts/system_prompt.md` |
+| 17 | **The scraper works on a live public website**: books.toscrape.com was scraped through the UI — robots.txt fetched and honored, homepage compiled (1,871 text chars), polite delays included (7.3s wall clock), scraped data saved as CSV+JSON, verdict produced | 3 (committed artifacts + screenshots + reproducible one-command run) | **Observed** — artifacts carry the real fetched content and timestamps | `docs/evidence/live-scrape-books-toscrape.{json,csv,-decisions.csv}`, `docs/screenshots/live-scrape-run-dark.png`, run via `/scrape` page |
+| 18 | **Scraped website text is untrusted data**: a website planting "Ignore all previous instructions…" cannot steer the verdict — it flows through the same sanitizer + injection detector as fixture row L-006 | 3 | Observed | `tests/test_scraper.py::test_injection_planted_in_website_cannot_steer_verdict` |
+| 19 | **Scraper safety guards are enforced, not aspirational**: private/internal addresses refused (including DNS that resolves into private ranges), executable/installer URLs never fetched, robots.txt disallows honored | 3 | Observed | `tests/test_scraper.py::test_ssrf_guard_*`, `::test_dangerous_extension_never_fetched`, `::test_robots_txt_disallow` |
+| 20 | **People Data Labs adapter is implemented and guarded** (Company Enrich → employee_count, industry, revenue, LinkedIn URL; PDL numbers labeled Benchmarked) | 2 (code + mock-API tests; **not** exercised against the live PDL API — no key available; disclosed, not implied) | Observed for code+tests; **Assumed** for live provider behavior | `firstpass/enrich.py`, `tests/test_enrich.py`, dormant-mode behavior tested |
+| 21 | **Monthly LinkedIn human-review policy is implemented**: PDL data refreshes monthly, so a human must review each company's LinkedIn at least monthly — 30-day boundary enforced (29 days ok / 31 days due, unparseable timestamps fail safe), review store persisted, due-badge + "Mark reviewed" in the UI | 3 | Observed | `firstpass/enrich.py`, `tests/test_enrich.py::test_monthly_review_boundary`, run-page UI |
+| 22 | **Both ingestion paths are fully automated** as the brief's workflow requires: CSV upload → clean → AI → cards, and website scrape → compile → AI → verdict → cards — with run history categorized (Scraped data vs Processed datasets) | 2–3 | Observed | `review.py` upload + scrape flows, landing sidebar, `tests/test_review.py`, `tests/test_scraper.py::test_scrape_to_pipeline_integration` |
 
 ## What we could NOT verify (and refuse to fake)
 
@@ -31,7 +37,11 @@ Benchmarked / Assumed**). Unlabeled numbers are how trust dies; we label ours.
 - The committed run used the deterministic engine (no LLM API key available
   for this submission). The LLM path is fully implemented and guarded, but
   its live behavior with a specific provider is not part of our evidence.
-- Enrichment (People Data Labs / website fetching) is designed but not
-  active in the demo; fixture companies are mostly fictional domains, and
-  the honest behavior is to decide on form data with reduced confidence
-  rather than to scrape invented companies.
+- The People Data Labs adapter is fully implemented and tested against a
+  mock API, but not exercised live (no PDL key) — labeled here and in the
+  UI rather than implied.
+- Website-scrape enrichment for CSV-uploaded leads (as opposed to the
+  dedicated /scrape flow, which is live and evidenced above) is designed
+  but not active; fixture companies are mostly fictional domains, and the
+  honest behavior is to decide on form data with reduced confidence rather
+  than to scrape invented companies.

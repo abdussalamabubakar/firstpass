@@ -28,6 +28,7 @@ from __future__ import annotations
 
 import csv
 import ipaddress
+import json
 import re
 import socket
 import time
@@ -396,6 +397,30 @@ def build_lead_record(result: dict, lead_id: str | None = None) -> dict:
         parts.append("Signals: " + ", ".join(result["signals"]) + ".")
     if result.get("emails"):
         parts.append("Public contact emails: " + ", ".join(result["emails"][:5]) + ".")
+
+    # People Data Labs enrichment (Benchmarked) — the "reviews their LinkedIn"
+    # step of the manual workflow, adapter-provided and labeled.
+    pdl = result.get("pdl_enrichment") or {}
+    enrichment_json = ""
+    if pdl and not pdl.get("error"):
+        pdl_bits = []
+        if isinstance(pdl.get("employee_count"), int):
+            pdl_bits.append(f"{pdl['employee_count']:,} employees")
+        if pdl.get("industry"):
+            pdl_bits.append(f"industry: {pdl['industry']}")
+        if isinstance(pdl.get("revenue_estimated_usd"), int):
+            pdl_bits.append(f"revenue est. ${pdl['revenue_estimated_usd']:,}/yr")
+        if pdl.get("linkedin_url"):
+            pdl_bits.append(f"LinkedIn: {pdl['linkedin_url']}")
+        if pdl_bits:
+            parts.append("People Data Labs (Benchmarked): " + ", ".join(pdl_bits) + ".")
+        enrichment_json = json.dumps({
+            "employee_count": pdl.get("employee_count"),
+            "revenue_estimated_usd": pdl.get("revenue_estimated_usd"),
+            "industry": pdl.get("industry"),
+            "linkedin_url": pdl.get("linkedin_url"),
+            "source": "People Data Labs",
+        })
     page_texts = [p.get("text_preview", "") for p in result.get("pages", [])]
     body = " ".join(t for t in page_texts if t).strip()
     message = " ".join(parts).strip()
@@ -412,6 +437,7 @@ def build_lead_record(result: dict, lead_id: str | None = None) -> dict:
         "monthly_budget_usd": "",
         "message": message,
         "source": "live_scrape",
+        "enrichment": enrichment_json,
     }
 
 

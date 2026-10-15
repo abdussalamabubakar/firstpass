@@ -53,10 +53,20 @@ def revenue_estimate(record: dict) -> dict:
     """Rough company-revenue estimate, honestly labeled.
 
     Every number this agent emits is labeled Observed / Estimated /
-    Assumed. These are Assumed: they come from transparent multipliers,
-    not from observed financials. When the data cannot support an
-    estimate, we say so instead of inventing one.
+    Benchmarked / Assumed. A People Data Labs employee count (if enrichment
+    is attached) is Benchmarked — external provider data; the conversion
+    multiplier is still an disclosed assumption. When the data cannot
+    support an estimate, we say so instead of inventing one.
     """
+    enrichment = record.get("enrichment") or {}
+    pdl_employees = enrichment.get("employee_count")
+    if isinstance(pdl_employees, int) and pdl_employees >= 10:
+        low, high = pdl_employees * 150_000, pdl_employees * 300_000
+        return {
+            "low_usd": low, "high_usd": high, "label": "Benchmarked",
+            "basis": f"{pdl_employees:,} employees (People Data Labs) x assumed $150k-$300k revenue/employee",
+        }
+
     message = record["message"]
     employees = None
     import re
@@ -291,6 +301,18 @@ def _briefing(record: dict, decision: str) -> list[str]:
 
     trap_flags = [f for f in record["flags"] if not f.startswith(("missing_field", "budget:", "invalid_field", "insecure"))]
     bullets.append("Risk flags: " + (", ".join(trap_flags) if trap_flags else "none") + ".")
+
+    enrichment = record.get("enrichment") or {}
+    if enrichment.get("employee_count") or enrichment.get("linkedin_url"):
+        pdl_bits = []
+        if isinstance(enrichment.get("employee_count"), int):
+            pdl_bits.append(f"{enrichment['employee_count']:,} employees")
+        if enrichment.get("industry"):
+            pdl_bits.append(f"industry: {enrichment['industry']}")
+        if enrichment.get("linkedin_url"):
+            pdl_bits.append(f"LinkedIn: {enrichment['linkedin_url']}")
+        if pdl_bits:
+            bullets.append("People Data Labs (Benchmarked): " + ", ".join(pdl_bits) + ".")
     return bullets
 
 

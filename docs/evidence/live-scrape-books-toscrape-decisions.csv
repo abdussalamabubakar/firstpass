@@ -1,0 +1,2 @@
+lead_id,decision,reason,confidence
+L-SCR-1,REJECT,No usable budget signal and no clear commercial intent in the message.,0.4

@@ -20,6 +20,7 @@ parameter through which raw CSV text can enter the AI layer.
 from __future__ import annotations
 
 import html
+import json
 import re
 import unicodedata
 from datetime import datetime
@@ -271,6 +272,20 @@ def sanitize_lead(row: dict) -> dict:
     if website_scheme == "http":
         flags.append("insecure_website_scheme")
 
+    # Enrichment passthrough: OUR adapter (e.g. People Data Labs) may attach
+    # structured, already-labeled facts to a row. This is the only path by
+    # which non-form data enters the record — it is adapter-authored JSON,
+    # never scraped text, so the security boundary stays intact.
+    enrichment: dict = {}
+    raw_enrichment = raw.get("enrichment", "")
+    if raw_enrichment:
+        try:
+            parsed = json.loads(raw_enrichment)
+            if isinstance(parsed, dict):
+                enrichment = parsed
+        except (json.JSONDecodeError, TypeError):
+            enrichment = {}
+
     record = {
         "lead_id": sanitize_text(raw.get("lead_id", "")),
         "source": source,
@@ -290,6 +305,7 @@ def sanitize_lead(row: dict) -> dict:
         "message": message,
         "urls": urls,
         "flags": flags,
+        "enrichment": enrichment,
         "sanitization": stats,
         "forensics": {
             "raw": {

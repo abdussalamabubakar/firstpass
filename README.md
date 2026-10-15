@@ -30,7 +30,8 @@ schema — the "already-scraped" data), or one-click the bundled demo fixture.
 Every upload becomes a **run**: the pipeline sanitizes, detects traps, and
 produces verdicts (via OpenRouter when `LLM_API_KEY` is set, transparent
 deterministic engine otherwise), then opens that run's review queue. Past
-runs sit in the history sidebar on the left. On each card, your click on
+runs sit in the history sidebar on the left, categorized into **Scraped data** (born from live scraping) and **Processed datasets** (dropped CSVs).
+On each card, your click on
 **Approved / Not Approved / Not Enough** is the final say — it can confirm
 or override the AI, and both verdicts are persisted to the run's
 `final_decisions.csv`.
@@ -51,6 +52,29 @@ or override the AI, and both verdicts are persisted to the run's
    domain, executable/installer URLs never fetched, private-network
    addresses refused (SSRF guard).
 
+   **Proof it works on a live site:** the committed artifacts in
+   `docs/evidence/` are the real output of scraping `books.toscrape.com`
+   through the UI (robots fetched, content compiled, verdict produced) —
+   reproduce it in one command from the Scrape page.
+
+### People Data Labs enrichment (optional)
+
+The manual workflow's "reviews their LinkedIn" step is handled by a
+People Data Labs adapter (`firstpass/enrich.py`, Company Enrich API):
+
+```bash
+export PDL_API_KEY="..."      # optional; dormant without it (disclosed in the UI)
+python review.py              # scrapes now attach employee count, industry,
+                              # revenue estimate (labeled Benchmarked), LinkedIn URL
+```
+
+**Monthly LinkedIn review policy (by design):** PDL data refreshes monthly,
+so a human must review each company's LinkedIn profile at least once a
+month. The run page shows a due-badge against the 30-day boundary and a
+"Mark reviewed today" action; every review is persisted to
+`out/linkedin_reviews.csv` as an audit trail. The boundary is tested
+(29 days ok, 31 days due, unparseable timestamps fail safe).
+
 Prefer the terminal? The CLI does the same processing without the UI:
 
 ```bash
@@ -61,7 +85,7 @@ python run_agent.py --input path/to/your.csv --out out
 Tests (the full trap regression net):
 
 ```bash
-python -m pytest tests/ -q          # 63 tests
+python -m pytest tests/ -q          # 70 tests
 ```
 
 ## What it looks like
@@ -180,6 +204,7 @@ firstpass/
   verdict.py            scoring engine + guardrail hierarchy
   llm.py                optional LLM adapter (plain HTTP, no SDK)
   scraper.py            polite bounded website scraper (ingestion adapter)
+  enrich.py             People Data Labs adapter + monthly LinkedIn review policy
   pipeline.py           orchestration
   report.py             output writers
 prompts/system_prompt.md  the baked-in prompt (output contract + trust rules)
@@ -187,13 +212,13 @@ templates/upload.html   landing page: dataset upload + run history
 templates/scrape.html   page 2: company-website scraping
 templates/review.html   per-run card review queue (all lead content autoescaped)
 static/theme.js         dark/light theme toggle (persisted, system-aware)
-tests/                  63 tests incl. the full-fixture trap net + scraper suite
+tests/                  70 tests incl. the full-fixture trap net + scraper suite
 fixtures/               pinned challenge fixture
 out/                    committed demo run: decisions.csv, sanitized_leads.json,
                         cards.json, traces/, summary.json, run.log
 out/runs/<id>/          every upload/scrape becomes its own run directory
 docs/                   trap-map, failure-notes, evidence-log, ai-disclosure,
-                        submission drafts, screenshots
+                        submission drafts, screenshots, evidence/
 ```
 
 ## What stays human (on purpose)

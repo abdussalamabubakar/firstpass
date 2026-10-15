@@ -35,6 +35,7 @@ import requests
 from flask import (Flask, abort, flash, jsonify, redirect, render_template,
                    request, url_for)
 
+from firstpass import enrich
 from firstpass.pipeline import run as run_pipeline
 from firstpass.scraper import (UnsafeUrlError, build_lead_record,
                                scrape_site, write_scraped_csv)
@@ -45,6 +46,7 @@ RUNS_DIR = OUT_ROOT / "runs"
 INDEX_PATH = RUNS_DIR / "index.json"
 FIXTURE_PATH = BASE_DIR / "fixtures" / "inbound_leads.csv"
 DEMO_RUN_ID = "demo-fixture"
+REVIEW_STORE = OUT_ROOT / "linkedin_reviews.csv"
 
 # The dataset contract. A upload missing any of these is rejected with a
 # friendly message instead of failing mid-pipeline.
@@ -189,10 +191,20 @@ def _discard(run_dir: Path) -> None:
 # Routes
 # ---------------------------------------------------------------------------
 
+def _run_kind(entry: dict) -> str:
+    """Scraped-data runs were born from live scraping; everything else is a
+    processed dataset (dropped CSV / bundled demo)."""
+    run_dir = OUT_ROOT / entry["dir"]
+    return "scrape" if (run_dir / "scraped_data.json").exists() else "dataset"
+
+
 @app.get("/")
 def landing():
     _seed_demo_run()
-    return render_template("upload.html", runs=_load_index(),
+    entries = _load_index()
+    for entry in entries:
+        entry["kind"] = _run_kind(entry)
+    return render_template("upload.html", runs=entries,
                            schema_cols=sorted(REQUIRED_COLUMNS))
 
 
@@ -302,6 +314,22 @@ def scrape_submit():
         flash(f"Nothing could be scraped from {raw_url} ({reason}).")
         return redirect(url_for("scrape_page"))
 
+    # People Data Labs enrichment (the "reviews their LinkedIn" step of the
+    # manual workflow) — key-gated; without a key the run proceeds
+    # unenriched and says so in the scraped data.
+    if enrich.available():
+        try:
+            pdl = enrich.enrich_company(website=result["origin"] or raw_url)
+            enrich.attach_review_status(pdl, REVIEW_STORE)
+            result["pdl_enrichment"] = pdl
+        except enrich.EnrichmentError as exc:
+            result["pdl_enrichment"] = {"error": str(exc), "source": "People Data Labs"}
+    else:
+        result["pdl_enrichment"] = {
+            "error": "PDL_API_KEY not set — enrichment dormant, run proceeded on scraped data only",
+            "source": "People Data Labs",
+        }
+
     # The scraped data section: JSON (full) + CSV (per page), saved with the run.
     (run_dir / "scraped_data.json").write_text(
         json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -314,7 +342,7 @@ def scrape_submit():
     with open(input_path, "w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=[
             "lead_id", "submitted_at", "name", "email", "company", "website",
-            "monthly_budget_usd", "message", "source"])
+            "monthly_budget_usd", "message", "source", "enrichment"])
         writer.writeheader()
         writer.writerow(lead)
 
@@ -375,6 +403,10 @@ def review_run(run_id: str):
             scraped = json.loads(scraped_path.read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError):
             scraped = None
+        if scraped and scraped.get("pdl_enrichment") and not scraped["pdl_enrichment"].get("error"):
+            # Refresh the review-policy status against the current store so
+            # the badge is true right now, not as of the scrape time.
+            enrich.attach_review_status(scraped["pdl_enrichment"], REVIEW_STORE)
     return render_template(
         "review.html",
         run=entry,
@@ -414,6 +446,29 @@ def decide(run_id: str, lead_id: str):
         "decided_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     })
     return jsonify(ok=True, lead_id=lead_id, final_decision=final_decision)
+
+
+@app.post("/run/<run_id>/linkedin-review")
+def linkedin_review(run_id: str):
+    """Record the human's monthly LinkedIn review for this run's company.
+
+    Policy: PDL data refreshes monthly, so a person re-checks the company's
+    LinkedIn at least that often; the store proves the cadence happened.
+    """
+    run_dir = _run_dir(run_id)
+    if run_dir is None or not (run_dir / "scraped_data.json").exists():
+        abort(404)
+    try:
+        data = json.loads((run_dir / "scraped_data.json").read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return jsonify(error="scraped data unreadable"), 500
+    pdl = data.get("pdl_enrichment") or {}
+    host = enrich.url_host(pdl.get("website") or pdl.get("linkedin_url") or "")
+    if not host:
+        return jsonify(error="no company identity to record a review for"), 400
+    note = ((request.get_json(silent=True) or {}).get("note") or "").strip()
+    enrich.record_linkedin_review(REVIEW_STORE, host, note)
+    return jsonify(ok=True, host=host, reviewed_at=datetime.now(timezone.utc).isoformat(timespec="seconds"))
 
 
 @app.get("/run/<run_id>/trace/<lead_id>")

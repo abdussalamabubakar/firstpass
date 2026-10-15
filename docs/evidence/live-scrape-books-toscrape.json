@@ -1,0 +1,107 @@
+{
+  "url": "https://books.toscrape.com",
+  "origin": "https://books.toscrape.com",
+  "fetched_at": "2026-10-14T23:32:46+00:00",
+  "company_name": "All products",
+  "description": "",
+  "emails": [],
+  "socials": [],
+  "services": [
+    "All products",
+    "A Light in the ...",
+    "Tipping the Velvet",
+    "Soumission",
+    "Sharp Objects",
+    "Sapiens: A Brief History ...",
+    "The Requiem Red",
+    "The Dirty Little Secrets ...",
+    "The Coming Woman: A ...",
+    "The Boys in the ...",
+    "The Black Maria",
+    "Starving Hearts (Triangular Trade ...",
+    "Shakespeare's Sonnets",
+    "Set Me Free",
+    "Scott Pilgrim's Precious Little ...",
+    "Rip it Up and ...",
+    "Our Band Could Be ...",
+    "Olio",
+    "Mesaerion: The Best Science ...",
+    "Libertarianism for Beginners"
+  ],
+  "signals": [],
+  "pages": [
+    {
+      "url": "https://books.toscrape.com/",
+      "title": "All products | Books to Scrape - Sandbox",
+      "description": "",
+      "og_site_name": "",
+      "headings": [
+        "All products",
+        "A Light in the ...",
+        "Tipping the Velvet",
+        "Soumission",
+        "Sharp Objects",
+        "Sapiens: A Brief History ...",
+        "The Requiem Red",
+        "The Dirty Little Secrets ...",
+        "The Coming Woman: A ...",
+        "The Boys in the ...",
+        "The Black Maria",
+        "Starving Hearts (Triangular Trade ...",
+        "Shakespeare's Sonnets",
+        "Set Me Free",
+        "Scott Pilgrim's Precious Little ...",
+        "Rip it Up and ...",
+        "Our Band Could Be ...",
+        "Olio",
+        "Mesaerion: The Best Science ...",
+        "Libertarianism for Beginners",
+        "It's Only the Himalayas"
+      ],
+      "emails": [],
+      "socials": [],
+      "same_domain_links": [],
+      "text_chars": 1871,
+      "text_preview": "All products | Books to Scrape - Sandbox Books to Scrape We love being scraped! Home All products Books Travel Mystery Historical Fiction Sequential Art Classics Philosophy Romance Womens Fiction Fiction Childrens Religion Nonfiction Music Default Science Fiction Sports and Games Add a comment Fantasy New Adult Young Adult Science Poetry Paranormal Art Psychology Autobiography Parenting Adult Fiction Humor Horror History Food and Drink Christian Fiction Business Biography Thriller Contemporary Spirituality Academic Self Help Historical Christian Suspense Short Stories Novels Health Politics Cu"
+    }
+  ],
+  "errors": [
+    {
+      "url": "https://books.toscrape.com/about",
+      "reason": "HTTP 404"
+    },
+    {
+      "url": "https://books.toscrape.com/about-us",
+      "reason": "HTTP 404"
+    },
+    {
+      "url": "https://books.toscrape.com/pricing",
+      "reason": "HTTP 404"
+    },
+    {
+      "url": "https://books.toscrape.com/services",
+      "reason": "HTTP 404"
+    },
+    {
+      "url": "https://books.toscrape.com/products",
+      "reason": "HTTP 404"
+    },
+    {
+      "url": "https://books.toscrape.com/contact",
+      "reason": "HTTP 404"
+    },
+    {
+      "url": "https://books.toscrape.com/careers",
+      "reason": "HTTP 404"
+    },
+    {
+      "url": "https://books.toscrape.com/blog",
+      "reason": "HTTP 404"
+    }
+  ],
+  "stats": {
+    "pages_fetched": 1,
+    "attempts": 9,
+    "elapsed_seconds": 7.33
+  }
+}

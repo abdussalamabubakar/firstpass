@@ -46,6 +46,12 @@
   .scraped-table th, .scraped-table td { border: 1px solid var(--line); padding: 5px 9px; text-align: left; }
   .scraped-table th { background: var(--surface2); }
   .scraped-links { display: flex; gap: 16px; }
+  .pdl-block { border-top: 1px dashed var(--line); margin-top: 10px; padding-top: 10px; }
+  .review-due { color: var(--bad); font-weight: 600; }
+  .review-ok { color: var(--ok); }
+  .review-btn { border: 1px solid var(--line); background: var(--card); color: var(--ink);
+                border-radius: 8px; padding: 4px 10px; font-size: 12px; cursor: pointer; margin-left: 8px; }
+  .review-btn:hover { border-color: var(--accent); color: var(--accent); }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
   .card.escalate-card { border-left: 4px solid var(--esc); }
   .top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
@@ -116,6 +122,34 @@
       <a class="trace-link" href="/run/{{ run.id }}/scraped_data.json" target="_blank">scraped_data.json</a>
       <a class="trace-link" href="/run/{{ run.id }}/scraped_data.csv" target="_blank">scraped_data.csv</a>
     </div>
+    {% if scraped.pdl_enrichment %}
+      {% set pdl = scraped.pdl_enrichment %}
+      <div class="pdl-block">
+        {% if pdl.error %}
+          <div><span class="k">People Data Labs:</span> {{ pdl.error }}</div>
+        {% else %}
+          <div><span class="k">People Data Labs (Benchmarked):</span>
+            {% if pdl.employee_count %}{{ "{:,}".format(pdl.employee_count) }} employees · {% endif %}
+            {{ pdl.industry or 'industry n/a' }}
+            {% if pdl.revenue_estimated_usd %} · revenue est. {{ "${:,.0f}".format(pdl.revenue_estimated_usd) }}/yr{% endif %}
+            {% if pdl.linkedin_url %} · <a href="{{ pdl.linkedin_url }}" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>{% endif %}
+          </div>
+          <div>
+            <span class="k">LinkedIn review:</span>
+            {% if pdl.linkedin_review.review_due %}
+              <span class="review-due">DUE</span>
+            {% else %}
+              <span class="review-ok">ok</span>
+            {% endif %}
+            — {{ pdl.linkedin_review.policy }}
+            {% if pdl.linkedin_review.last_reviewed %}(last: {{ pdl.linkedin_review.last_reviewed }}){% endif %}
+            <button type="button" class="review-btn" id="mark-reviewed"
+                    data-run="{{ run.id }}" {% if not pdl.linkedin_review.review_due %}disabled{% endif %}>Mark reviewed today</button>
+            <span class="status" id="review-status"></span>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
   </details>
   {% endif %}
   <div class="counts">
@@ -190,6 +224,35 @@
 </main>
 <script>
 var RUN_ID = {{ run.id | tojson }};
+var reviewBtn = document.getElementById("mark-reviewed");
+if (reviewBtn) {
+  reviewBtn.addEventListener("click", function () {
+    var statusEl = document.getElementById("review-status");
+    reviewBtn.disabled = true;
+    statusEl.textContent = "saving…";
+    fetch("/run/" + encodeURIComponent(RUN_ID) + "/linkedin-review", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ note: "manual LinkedIn review" })
+    })
+    .then(function (resp) { return resp.json().then(function (b) { return { ok: resp.ok, body: b }; }); })
+    .then(function (result) {
+      if (result.ok) {
+        statusEl.textContent = "recorded " + result.body.reviewed_at;
+        statusEl.className = "status ok";
+      } else {
+        statusEl.textContent = result.body.error || "failed";
+        statusEl.className = "status err";
+        reviewBtn.disabled = false;
+      }
+    })
+    .catch(function () {
+      statusEl.textContent = "network error";
+      statusEl.className = "status err";
+      reviewBtn.disabled = false;
+    });
+  });
+}
 document.querySelectorAll(".decide").forEach(function (row) {
   var leadId = row.dataset.lead;
   var status = row.querySelector(".status");

@@ -206,10 +206,11 @@ def test_build_lead_record_matches_fixture_schema():
     row = build_lead_record(_tiny_result(), lead_id="L-SCR-1")
     assert list(row.keys()) == [
         "lead_id", "submitted_at", "name", "email", "company", "website",
-        "monthly_budget_usd", "message", "source"]
+        "monthly_budget_usd", "message", "source", "enrichment"]
     assert row["source"] == "live_scrape"
     assert row["company"] == "Nimbus Analytics"
     assert "Live website scrape" in row["message"]
+    assert row["enrichment"] == ""  # dormant/no-PDL runs carry no enrichment
 
 
 def _tiny_result():
@@ -255,7 +256,7 @@ def test_scrape_to_pipeline_integration(tmp_path, site_server):
     with open(input_path, "w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=[
             "lead_id", "submitted_at", "name", "email", "company", "website",
-            "monthly_budget_usd", "message", "source"])
+            "monthly_budget_usd", "message", "source", "enrichment"])
         writer.writeheader()
         writer.writerow(row)
 
