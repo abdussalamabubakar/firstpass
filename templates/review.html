@@ -4,15 +4,28 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>firstpass — Lead Review ({{ run.label }})</title>
+<script src="/static/theme.js"></script>
 <style>
   :root {
     --bg: #f5f6f8; --card: #ffffff; --ink: #1c2733; --muted: #5b6b7b;
     --line: #e3e8ee; --accent: #1f6feb; --ok: #1a7f37; --warn: #b7791f;
-    --bad: #b42318; --esc: #6941c6;
+    --bad: #b42318; --esc: #6941c6; --surface2: #f2f5f9;
+  }
+  [data-theme="dark"] {
+    --bg: #0d1117; --card: #161b22; --ink: #e6edf3; --muted: #8b949e;
+    --line: #30363d; --accent: #58a6ff; --ok: #3fb950; --warn: #d29922;
+    --bad: #f85149; --esc: #a371f7; --surface2: #1c2129;
   }
   * { box-sizing: border-box; }
   body { margin: 0; font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--ink); }
   header { background: #101828; color: #fff; padding: 18px 28px; }
+  .header-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .header-actions { display: flex; align-items: center; gap: 14px; }
+  .nav-link { color: #b9c2cf; font-size: 13px; text-decoration: none; }
+  .nav-link:hover { color: #fff; }
+  .theme-toggle { background: none; border: 1px solid #30363d; color: #b9c2cf; border-radius: 8px;
+                  padding: 5px 12px; font-size: 12.5px; cursor: pointer; }
+  .theme-toggle:hover { color: #fff; border-color: #8b949e; }
   header h1 { margin: 0; font-size: 20px; }
   header h1 a { color: #b9c2cf; font-size: 13px; font-weight: 400; text-decoration: none; margin-right: 10px; }
   header h1 a:hover { color: #fff; }
@@ -24,6 +37,15 @@
   .chip b { color: var(--ink); }
   h2 { font-size: 16px; margin: 30px 0 12px; }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(460px, 1fr)); gap: 16px; }
+  .scraped-panel { background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+                   padding: 14px 18px; margin-bottom: 18px; font-size: 13px; }
+  .scraped-panel summary { cursor: pointer; }
+  .scraped-grid { display: grid; grid-template-columns: 1fr; gap: 4px; margin: 12px 0 10px; }
+  .scraped-grid .k { color: var(--muted); }
+  .scraped-table { border-collapse: collapse; width: 100%; font-size: 12.5px; margin-bottom: 10px; }
+  .scraped-table th, .scraped-table td { border: 1px solid var(--line); padding: 5px 9px; text-align: left; }
+  .scraped-table th { background: var(--surface2); }
+  .scraped-links { display: flex; gap: 16px; }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
   .card.escalate-card { border-left: 4px solid var(--esc); }
   .top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
@@ -36,17 +58,17 @@
   .meta { color: var(--muted); font-size: 12.5px; margin: 4px 0 10px; }
   .briefing { margin: 0 0 10px; padding-left: 18px; }
   .briefing li { font-size: 13px; margin-bottom: 4px; }
-  .reason { font-size: 13px; background: #f2f5f9; border-radius: 8px; padding: 9px 11px; margin-bottom: 10px; }
+  .reason { font-size: 13px; background: var(--surface2); border-radius: 8px; padding: 9px 11px; margin-bottom: 10px; }
   .flags { margin-bottom: 10px; }
-  .flag { display: inline-block; font-size: 11px; font-family: Consolas, monospace; background: #eef1f5;
-          border: 1px solid var(--line); border-radius: 6px; padding: 2px 7px; margin: 2px 4px 2px 0; color: #45535f; }
+  .flag { display: inline-block; font-size: 11px; font-family: Consolas, monospace; background: var(--surface2);
+          border: 1px solid var(--line); border-radius: 6px; padding: 2px 7px; margin: 2px 4px 2px 0; color: var(--muted); }
   .flag.hot { background: #fdecea; border-color: #f4c7c3; color: var(--bad); }
   .route { font-size: 13px; color: var(--esc); font-weight: 600; margin-bottom: 8px; }
   .ai-recommend { font-size: 12.5px; color: var(--muted); margin-bottom: 8px; }
   .ai-recommend b { color: var(--ink); }
   .decide { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-  .decide button { border: 1px solid var(--line); background: #fff; border-radius: 8px;
-                   padding: 7px 14px; font-size: 13px; cursor: pointer; font-weight: 600; }
+  .decide button { border: 1px solid var(--line); background: var(--card); border-radius: 8px;
+                   padding: 7px 14px; font-size: 13px; cursor: pointer; font-weight: 600; color: var(--ink); }
   .decide button:hover { border-color: var(--accent); color: var(--accent); }
   .decide button:disabled { opacity: .45; cursor: default; }
   .decide input { flex: 1; min-width: 140px; border: 1px solid var(--line); border-radius: 8px;
@@ -60,10 +82,42 @@
 </head>
 <body>
 <header>
-  <h1><a href="/">← New run</a>firstpass — Lead Review</h1>
-  <p>{{ run.label }} · {{ run.created_at }} · engine: {{ run.engine }}. Verdicts are the AI's; your click is the final say.</p>
+  <div class="header-inner">
+    <div>
+      <h1><a href="/">← New run</a>firstpass — Lead Review</h1>
+      <p>{{ run.label }} · {{ run.created_at }} · engine: {{ run.engine }}. Verdicts are the AI's; your click is the final say.</p>
+    </div>
+    <div class="header-actions">
+      <a class="nav-link" href="/">Upload dataset</a>
+      <a class="nav-link" href="/scrape">Scrape a website</a>
+      <button type="button" class="theme-toggle" data-theme-toggle></button>
+    </div>
+  </div>
 </header>
 <main>
+  {% if scraped %}
+  <details class="panel scraped-panel">
+    <summary><b>Scraped data</b> — compiled from the live website (CSV / JSON saved with this run)</summary>
+    <div class="scraped-grid">
+      <div><span class="k">Website:</span> {{ scraped.url }}</div>
+      <div><span class="k">Company:</span> {{ scraped.company_name or '(not detected)' }}</div>
+      <div><span class="k">Emails found:</span> {{ scraped.emails | join(', ') or '(none)' }}</div>
+      <div><span class="k">Socials:</span> {{ scraped.socials | join(', ') or '(none)' }}</div>
+      <div><span class="k">Pages fetched:</span> {{ scraped.pages | length }} · signals: {{ scraped.signals | join(', ') or 'none' }}</div>
+      {% if scraped.description %}<div><span class="k">Site description:</span> {{ scraped.description }}</div>{% endif %}
+    </div>
+    <table class="scraped-table">
+      <tr><th>Page</th><th>Title</th><th>Text chars</th></tr>
+      {% for page in scraped.pages %}
+      <tr><td>{{ page.url }}</td><td>{{ page.title }}</td><td>{{ page.text_chars }}</td></tr>
+      {% endfor %}
+    </table>
+    <div class="scraped-links">
+      <a class="trace-link" href="/run/{{ run.id }}/scraped_data.json" target="_blank">scraped_data.json</a>
+      <a class="trace-link" href="/run/{{ run.id }}/scraped_data.csv" target="_blank">scraped_data.csv</a>
+    </div>
+  </details>
+  {% endif %}
   <div class="counts">
     <span class="chip">Total <b>{{ total }}</b></span>
     {% for decision, count in counts.items() %}

@@ -29,11 +29,15 @@ import json
 import os
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import urlsplit
 
+import requests
 from flask import (Flask, abort, flash, jsonify, redirect, render_template,
                    request, url_for)
 
 from firstpass.pipeline import run as run_pipeline
+from firstpass.scraper import (UnsafeUrlError, build_lead_record,
+                               scrape_site, write_scraped_csv)
 
 BASE_DIR = Path(__file__).resolve().parent
 OUT_ROOT = Path(os.environ.get("FIRSTPASS_OUT", BASE_DIR / "out"))
@@ -260,6 +264,94 @@ def demo_run():
     return redirect(url_for("review_run", run_id=run_id))
 
 
+@app.get("/scrape")
+def scrape_page():
+    return render_template("scrape.html")
+
+
+@app.post("/scrape")
+def scrape_submit():
+    """Page 2: take a company website URL, scrape it, save the compiled
+    scraped data (CSV + JSON), and feed it through the pipeline for the
+    AI intelligence briefing — the same security boundary as CSV uploads."""
+    raw_url = (request.form.get("url") or "").strip()
+    if not raw_url:
+        flash("Enter a company website URL first.")
+        return redirect(url_for("scrape_page"))
+    if not raw_url.startswith(("http://", "https://")):
+        raw_url = "https://" + raw_url
+
+    run_id = (datetime.now(timezone.utc).strftime("scr-%Y%m%d-%H%M%S")
+              + "-" + os.urandom(2).hex())
+    run_dir = RUNS_DIR / run_id
+    run_dir.mkdir(parents=True, exist_ok=True)
+
+    try:
+        result = scrape_site(raw_url)
+    except UnsafeUrlError as exc:
+        _discard(run_dir)
+        flash(f"Blocked: {exc}")
+        return redirect(url_for("scrape_page"))
+    except requests.RequestException as exc:
+        _discard(run_dir)
+        flash(f"Could not reach {raw_url}: {exc}")
+        return redirect(url_for("scrape_page"))
+    if not result["pages"]:
+        _discard(run_dir)
+        reason = result["errors"][0]["reason"] if result["errors"] else "no pages fetched"
+        flash(f"Nothing could be scraped from {raw_url} ({reason}).")
+        return redirect(url_for("scrape_page"))
+
+    # The scraped data section: JSON (full) + CSV (per page), saved with the run.
+    (run_dir / "scraped_data.json").write_text(
+        json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+    write_scraped_csv(result, run_dir / "scraped_data.csv")
+
+    # Ingestion adapter: one synthetic lead row in the fixture schema, then
+    # the standard pipeline (sanitize → signals → verdict) runs on it.
+    lead = build_lead_record(result, lead_id="L-SCR-1")
+    input_path = run_dir / "input.csv"
+    with open(input_path, "w", newline="", encoding="utf-8") as fh:
+        writer = csv.DictWriter(fh, fieldnames=[
+            "lead_id", "submitted_at", "name", "email", "company", "website",
+            "monthly_budget_usd", "message", "source"])
+        writer.writeheader()
+        writer.writerow(lead)
+
+    sha256 = hashlib.sha256(input_path.read_bytes()).hexdigest()
+    try:
+        summary = run_pipeline(input_path, run_dir, llm_mode="auto", input_sha256=sha256)
+    except Exception as exc:  # surface any pipeline failure to the reviewer
+        _discard(run_dir)
+        flash(f"Processing failed: {exc}")
+        return redirect(url_for("scrape_page"))
+
+    host = urlsplit(raw_url).hostname or raw_url
+    _register_run(run_id, run_dir, label=f"Live scrape — {result['company_name'] or host}",
+                  source_file=raw_url, summary=summary, sha256=sha256)
+    return redirect(url_for("review_run", run_id=run_id))
+
+
+@app.get("/run/<run_id>/scraped_data.json")
+def scraped_json(run_id: str):
+    run_dir = _run_dir(run_id)
+    if run_dir is None or not (run_dir / "scraped_data.json").exists():
+        abort(404)
+    return app.response_class(
+        (run_dir / "scraped_data.json").read_text(encoding="utf-8"),
+        mimetype="application/json")
+
+
+@app.get("/run/<run_id>/scraped_data.csv")
+def scraped_csv(run_id: str):
+    run_dir = _run_dir(run_id)
+    if run_dir is None or not (run_dir / "scraped_data.csv").exists():
+        abort(404)
+    return app.response_class(
+        (run_dir / "scraped_data.csv").read_text(encoding="utf-8"),
+        mimetype="text/csv")
+
+
 @app.get("/run/<run_id>")
 def review_run(run_id: str):
     _seed_demo_run()
@@ -276,6 +368,13 @@ def review_run(run_id: str):
     counts: dict[str, int] = {}
     for card in cards:
         counts[card["decision"]] = counts.get(card["decision"], 0) + 1
+    scraped = None
+    scraped_path = run_dir / "scraped_data.json"
+    if scraped_path.exists():
+        try:
+            scraped = json.loads(scraped_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            scraped = None
     return render_template(
         "review.html",
         run=entry,
@@ -284,6 +383,7 @@ def review_run(run_id: str):
         existing=existing,
         counts=counts,
         total=len(cards),
+        scraped=scraped,
     )
 
 

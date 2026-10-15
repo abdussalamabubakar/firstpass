@@ -35,6 +35,22 @@ runs sit in the history sidebar on the left. On each card, your click on
 or override the AI, and both verdicts are persisted to the run's
 `final_decisions.csv`.
 
+### Two ways in
+
+1. **Upload dataset** (`/`) — an already-scraped CSV, as above.
+2. **Scrape a website** (`/scrape`) — enter a company's website URL and the
+   agent does the collection itself: a **polite, bounded crawl** (homepage +
+   about/pricing/services/contact/careers/blog, max 6 pages, 1 s delay,
+   descriptive User-Agent, retries with backoff), compiled into a **scraped
+   data section saved as CSV and JSON** with the run. The compiled data
+   becomes a synthetic lead that flows through the *same* pipeline —
+   sanitizer, trap detectors, guardrails — so a website planting
+   "ignore all previous instructions" is caught by the same machinery as the
+   fixture's L-006, and the AI (OpenRouter when keyed) briefs on facts, not
+   obedience. Safety is enforced and tested: robots.txt honored, single
+   domain, executable/installer URLs never fetched, private-network
+   addresses refused (SSRF guard).
+
 Prefer the terminal? The CLI does the same processing without the UI:
 
 ```bash
@@ -45,7 +61,7 @@ python run_agent.py --input path/to/your.csv --out out
 Tests (the full trap regression net):
 
 ```bash
-python -m pytest tests/ -q          # 53 tests
+python -m pytest tests/ -q          # 63 tests
 ```
 
 ## What it looks like
@@ -163,16 +179,19 @@ firstpass/
   signals.py            trap detectors (run on sanitized text only)
   verdict.py            scoring engine + guardrail hierarchy
   llm.py                optional LLM adapter (plain HTTP, no SDK)
+  scraper.py            polite bounded website scraper (ingestion adapter)
   pipeline.py           orchestration
   report.py             output writers
 prompts/system_prompt.md  the baked-in prompt (output contract + trust rules)
 templates/upload.html   landing page: dataset upload + run history
+templates/scrape.html   page 2: company-website scraping
 templates/review.html   per-run card review queue (all lead content autoescaped)
-tests/                  53 tests incl. the full-fixture trap net
+static/theme.js         dark/light theme toggle (persisted, system-aware)
+tests/                  63 tests incl. the full-fixture trap net + scraper suite
 fixtures/               pinned challenge fixture
 out/                    committed demo run: decisions.csv, sanitized_leads.json,
                         cards.json, traces/, summary.json, run.log
-out/runs/<id>/          every upload/demo becomes its own run directory
+out/runs/<id>/          every upload/scrape becomes its own run directory
 docs/                   trap-map, failure-notes, evidence-log, ai-disclosure,
                         submission drafts, screenshots
 ```
