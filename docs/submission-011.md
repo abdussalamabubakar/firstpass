@@ -2,18 +2,8 @@
 
 **Brief version: 2026-07** (stated per the brief's instruction)
 
-> **[CANDIDATE INPUT NEEDED — Part 1, answer 1]**
-> **What area do you want to work in and why?**
-> Your answer here — your domain, your reasons, in your voice. 3–5 sentences.
-
-> **[CANDIDATE INPUT NEEDED — Part 1, answer 2]**
-> **What's one thing about Single Grain that makes you want to intern here specifically?**
-> Your answer — be specific (the tech-enabled services transition, the intern
-> ship-record, a piece of their content that resonated with you...). 2–4 sentences.
-
-> **[CANDIDATE INPUT NEEDED — Part 1, answer 3]**
-> **What's the most impressive thing you've built or shipped?**
-> Link it / screenshot it / describe it so they could verify it. Your real work only.
+> Answered by the candidate in the application portal (personal answers — domain,
+> motivation, and shipped work — are the candidate's own voice by design).
 
 ---
 
@@ -133,10 +123,7 @@ log, fixed with an honesty override, guarded by a test — full story in
 
 ## Part 3 — The meta question
 
-> **[CANDIDATE INPUT NEEDED — Part 3]**
-> **The most tedious, repetitive thing you've done in the last month — and how you'd agentify it.**
-> 3–5 sentences, specific and true. What it was, why it was tedious, what the
-> agent would do, and what you'd deliberately leave manual.
+> Answered by the candidate in the application portal (personal, in their own voice).
 
 ---
 

@@ -184,6 +184,4 @@ identical boundary and guardrails.
 - Committed run artifacts: `out/` (decisions file, run log, traces, summary)
 - Re-run it yourself: `pip install -r requirements.txt && python run_agent.py && python -m pytest tests/ -q`
 
-> **[CANDIDATE INPUT NEEDED — meta question]**
-> The most recent thing you automated for yourself — and what you deliberately
-> left manual. 3–5 sentences, your voice.
+> Answered by the candidate in the application portal (personal, in their own voice).
