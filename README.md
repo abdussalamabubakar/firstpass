@@ -13,6 +13,15 @@ from one codebase.
 
 Brief version cited: **2026-07**.
 
+## Reviewing for AI Automation Intern 012? Start here
+
+- **Decisions file** (exact contract — `lead_id, decision, reason, confidence`, one row per lead, all 20 processed): [`out/decisions.csv`](out/decisions.csv)
+- **Run log**: [`out/run.log`](out/run.log) | per-lead traces (incl. raw-vs-sanitized forensics): [`out/traces/`](out/traces)
+- **Fixture checksum** — `shasum -a 256 fixtures/inbound_leads.csv`:
+  `cc1927ca771c37b186a2abdb7b9757594da79ec6dda074e5a514dd2761cc8599`
+- **Re-run it**: `pip install -r requirements.txt && python run_agent.py --llm off` — or use the web UI (`python review.py`), which accepts any fresh fixture CSV or a live website scrape
+- **Write-up**: [`docs/submission-012.md`](docs/submission-012.md) | trap-by-trap handling: [`docs/trap-map.md`](docs/trap-map.md) | owned bad outputs: [`docs/failure-notes.md`](docs/failure-notes.md) | evidence with proof tiers: [`docs/evidence-log.md`](docs/evidence-log.md)
+
 ---
 
 ## Quickstart (2 commands, ~30 seconds)
