@@ -1,4 +1,4 @@
-firstpass run — 2026-10-14T22:33:22+00:00
+firstpass run — 2026-10-16T15:35:38+00:00
 input: fixtures\inbound_leads.csv
 input sha256: cc1927ca771c37b186a2abdb7b9757594da79ec6dda074e5a514dd2761cc8599
 llm: deterministic engine (no LLM)
@@ -14,7 +14,7 @@ trap rows surfaced: 10
   L-015: thread_followup_of:L-002
   L-019: sensitive_request
   L-020: security_suspicious
-timing: 13.3 ms total, 0.66 ms/lead (observed)
+timing: 25.4 ms total, 1.27 ms/lead (observed)
 per lead:
   [L-001] QUALIFY conf=0.9 flags=- :: Strong commercial intent with stated budget $25,000/mo, inside the typical retainer range for an agency of this profile.
   [L-002] REJECT conf=0.9 flags=missing_field:company,missing_field:website :: No commercial intent — this is a career/mentorship request, not a lead.

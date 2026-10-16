@@ -20,6 +20,7 @@
     "missing_field:company",
     "missing_field:website"
   ],
+  "enrichment": {},
   "sanitization": {
     "entities_decoded": 0,
     "tags_stripped": 0,

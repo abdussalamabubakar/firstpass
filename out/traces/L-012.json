@@ -19,6 +19,7 @@
   "flags": [
     "invalid_field:submitted_at"
   ],
+  "enrichment": {},
   "sanitization": {
     "entities_decoded": 0,
     "tags_stripped": 0,

@@ -21,6 +21,7 @@
     "missing_field:website",
     "sensitive_request"
   ],
+  "enrichment": {},
   "sanitization": {
     "entities_decoded": 0,
     "tags_stripped": 0,

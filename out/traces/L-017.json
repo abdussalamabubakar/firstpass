@@ -17,6 +17,7 @@
   "message": "Healthcare staffing platform. We need demand gen that respects compliance review on all ad copy. Team of 3 marketers in-house.",
   "urls": [],
   "flags": [],
+  "enrichment": {},
   "sanitization": {
     "entities_decoded": 0,
     "tags_stripped": 0,

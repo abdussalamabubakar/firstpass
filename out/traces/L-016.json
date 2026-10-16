@@ -17,6 +17,7 @@
   "message": "Hi there 👋👋 we do HVAC in the Phoenix metro & want more service calls!! Saw ur podcast 🔥🔥",
   "urls": [],
   "flags": [],
+  "enrichment": {},
   "sanitization": {
     "entities_decoded": 1,
     "tags_stripped": 2,

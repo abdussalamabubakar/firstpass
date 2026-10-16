@@ -18,6 +18,7 @@
     "message": "We're a Series B ecommerce SaaS doing paid acquisition in-house. CAC is climbing and we want an agency to take over paid + landing page testing. Looking to start within 30 days.",
     "urls": [],
     "flags": [],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,
@@ -52,6 +53,7 @@
       "missing_field:company",
       "missing_field:website"
     ],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,
@@ -85,6 +87,7 @@
     "flags": [
       "thread_followup_of:L-001"
     ],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,
@@ -119,6 +122,7 @@
     "flags": [
       "missing_field:email"
     ],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,
@@ -152,6 +156,7 @@
     "flags": [
       "budget:unspecified"
     ],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,
@@ -185,6 +190,7 @@
     "flags": [
       "injection_attempt"
     ],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,
@@ -218,6 +224,7 @@
     "flags": [
       "signal_conflict"
     ],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,
@@ -253,6 +260,7 @@
       "missing_field:website",
       "pressure_tactics"
     ],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,
@@ -284,6 +292,7 @@
     "message": "Somos un marketplace en crecimiento en México. Buscamos una agencia para SEO internacional y contenido en español e inglés. Tenemos presupuesto aprobado para este trimestre.",
     "urls": [],
     "flags": [],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,
@@ -319,6 +328,7 @@
       "budget:implausible",
       "junk"
     ],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,
@@ -352,6 +362,7 @@
     "flags": [
       "competitor_fishing"
     ],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,
@@ -385,6 +396,7 @@
     "flags": [
       "invalid_field:submitted_at"
     ],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,
@@ -420,6 +432,7 @@
       "competitor_fishing",
       "pressure_tactics"
     ],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,
@@ -451,6 +464,7 @@
     "message": "Pre-seed startup, small budget today but raising in the fall. Want to start light on SEO now and scale spend in about 6 months.",
     "urls": [],
     "flags": [],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,
@@ -486,6 +500,7 @@
       "missing_field:website",
       "thread_followup_of:L-002"
     ],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,
@@ -518,6 +533,7 @@
     "message": "Hi there 👋👋 we do HVAC in the Phoenix metro & want more service calls!! Saw ur podcast 🔥🔥",
     "urls": [],
     "flags": [],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 1,
       "tags_stripped": 2,
@@ -549,6 +565,7 @@
     "message": "Healthcare staffing platform. We need demand gen that respects compliance review on all ad copy. Team of 3 marketers in-house.",
     "urls": [],
     "flags": [],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,
@@ -582,6 +599,7 @@
     "flags": [
       "missing_field:message"
     ],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,
@@ -617,6 +635,7 @@
       "missing_field:website",
       "sensitive_request"
     ],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,
@@ -662,6 +681,7 @@
       "insecure_website_scheme",
       "security_suspicious"
     ],
+    "enrichment": {},
     "sanitization": {
       "entities_decoded": 0,
       "tags_stripped": 0,

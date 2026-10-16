@@ -17,6 +17,7 @@
   "message": "Pre-seed startup, small budget today but raising in the fall. Want to start light on SEO now and scale spend in about 6 months.",
   "urls": [],
   "flags": [],
+  "enrichment": {},
   "sanitization": {
     "entities_decoded": 0,
     "tags_stripped": 0,

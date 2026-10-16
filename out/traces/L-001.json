@@ -17,6 +17,7 @@
   "message": "We're a Series B ecommerce SaaS doing paid acquisition in-house. CAC is climbing and we want an agency to take over paid + landing page testing. Looking to start within 30 days.",
   "urls": [],
   "flags": [],
+  "enrichment": {},
   "sanitization": {
     "entities_decoded": 0,
     "tags_stripped": 0,
